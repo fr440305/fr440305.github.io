@@ -31,22 +31,20 @@
 <p>假设服务器叫 a.out 好了。输入：</p>
 
 <pre>
-user@host $ ./a.out
-</pre>
+    <code class='lang-bash'>user@host $ ./a.out
+</code></pre>
 
 <p>就可以让 a.out 运行起来。但是这样的话，命令行会一直卡在那里。因为这是服务器，是要跑三五年的。如果想让 a.out 在后台运行，该怎么办呢？方法是输入：</p>
 
-<pre>
-user@host $ ( ./a.out >/dev/null 2>/dev/null ) &
+<pre><code class='lang-bash'>user@host $ ( ./a.out >/dev/null 2>/dev/null ) &
 user@host $
-</pre>
+</code></pre>
 
 <p>多加了个“&amp;”符号，顺便还把 a.out 的输出重定向到 null 了。注意：小括号附近最好加上空格！加“&amp;”的作用，就是让程序移到后台去跑。但是，不在前台跑的程序，显然是不能把东西输出到命令行的，所以要把输出重定向到别的地方。定到日志文件里，比如：</p>
 
-<pre>
-user@host $ ( ./a.out >./stdout.log 2>./stderr.log ) &
+<pre><code class='lang-bash'>user@host $ ( ./a.out >./stdout.log 2>./stderr.log ) &
 user@host $
-</pre>
+</code></pre>
 
 <p>就更好了。</p>
 
@@ -54,10 +52,9 @@ user@host $
 
 <p>但是，这样的话，如果一关掉终端，或者，如果是用 ssh 登录到远程的机子上后关闭了 ssh，服务器也会随之退出（程序收到 SIGHUP 信号，但又没有设置忽略）。那怎么样，才能让程序在终端关闭之后，不至于退出呢？一个简单的方法就是使用 nohup 命令。比如：</p>
 
-<pre>
-user@host $ ( nohup ./a.out >./stdout.log 2>./stderr.log ) &
+<pre><code class='lang-bash'>user@host $ ( nohup ./a.out >./stdout.log 2>./stderr.log ) &
 user@host $
-</pre>
+</code></pre>
 
 <p>这样，终端关闭之后，程序便可以依旧运行了。</p>
 
@@ -67,35 +64,29 @@ user@host $
 
 <p>如果是这样——</p>
 
-<pre>
-user@host $ ( nohup sudo ./a.out >./stdout.log 2>./stderr.log ) &
+<pre><code class='lang-bash'>user@host $ ( nohup sudo ./a.out >./stdout.log 2>./stderr.log ) &
 user@host $
-</pre>
+</code></pre>
 
 <p>的话，你会发现，服务器并没有跑起来。原因很简单：sudo 一直在等你输密码，但是它在后台等待，而你却在前台，无法输入。</p>
 
 <p>解决方法：使用 sudo 的 -b 参数：</p>
 
-<pre>
-user@host $ sudo -b ./a.out 1>./std.log 2>./err.log
+<pre><code class='lang-bash'>user@host $ sudo -b ./a.out 1>./std.log 2>./err.log
 user@host $ Type the password:
 user@host $
-</pre>
+</code></pre>
 
 <p>“-b”参数能使 a.out 自动在后台运行，十分省事情。注意：这里不需要小括号。</p>
-
-<h2>建议</h2>
-
-<p>还是去学一学 systemd、supervisor、docker 之类的吧。多学点东西，有什么不好呢？反正以后都要用。</p>
 
 <h2>参考</h2>
 
 <p><a href='https://zhuanlan.zhihu.com/p/21839884'>《Go语言小贴士4——后台运行》</a></p>
 
-<pre>
+<pre><code class='lang-bash'>
 user@host $ man nohup
 user@host $ man sudo
-</pre>
+</code></pre>
 <!-- <p style="background:black;text-align:center;margin-top:20px;color:white;"><date>2017-10-18</date></p> -->
 
 <script src='/js/prism.js'></script>
@@ -130,7 +121,8 @@ s.setAttribute('data-timestamp', +new Date());
 <footer>
 <ul>
 <li><a href='/'>Index</a></li>
-<li><a href="https://github.com/fr440305/">GitHub</a></li>
+<li><a href='/blog/'>Blogs</a></li>
+<!--- <li><a href="https://github.com/fr440305/">GitHub</a></li> -->
 <li><a href="/hello/">Hello</a></li>
 </ul>
 </footer>
