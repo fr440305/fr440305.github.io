@@ -1,0 +1,114 @@
+<!doctype html>
+<html> <head>
+<meta charset='utf-8'>
+<meta name='viewport' content='initial-scale=1.0'>
+<title>LeetCode (4) Find Median in Two Sorted Arrays</title>
+<link rel='icon' size='32x32' href='/favicon.png'>
+<link rel='icon shortcut' type='image/ico' href='/favicon.png'>
+<link rel='apple-touch-icon' href='/favicon.png'>
+
+ <link rel='stylesheet' type='text/css' href='/css/global.css'>
+ <link rel='stylesheet' type='text/css' href='/css/prism.css'>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-120042471-1');
+</script>
+
+</head> <body>
+
+<article><h1>LeetCode (4) Find Median in Two Sorted Arrays</h1>
+
+<p>实不相瞒，这其实只是一篇测试帖。我想测试一下这炫酷的代码高亮，能否被正常显示。</p>
+
+<p>至于刷代码题。啊。好累。不想做啊。</p>
+
+<pre><code class='lang-C'>#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+double findMedianSortedArrays(int* av, int ac, int* bv, int bc) {
+    int len = ac + bc;
+    int tmp[len]; /* VLA */
+    int i = 0, j = 0, k = 0;
+    double res;
+
+    for (k = 0; k < len; k++)
+        if (i == ac)
+            tmp[k] = bv[j++];
+        else if (j == bc)
+            tmp[k] = av[i++];
+        else if (av[i] < bv[j])
+            tmp[k] = av[i++];
+        else
+            tmp[k] = bv[j++];
+
+    if (len % 2 == 0) /* even */
+        res = (tmp[len/2] + tmp[len/2 - 1]) / 2.0;
+    else
+        res = tmp[len/2];
+
+    return res;
+}
+
+int main() {
+    int a[2] = {1, 2};
+    int b[2] = {3, 4};
+
+    printf("\n== %f\n", findMedianSortedArrays(a, 2, b, 2));
+
+    return 0;
+}
+</code></pre>
+
+<p><del>这是用了一个叫做 <code>source-highlight</code> 的工具生成的。这个工具挺先进的，可惜我还不太会用。啊，好丑啊。不过没时间了，我作业还没写完。明天我再研究一下。</del></p>
+
+<p><del>说真的，现在我非常后悔。早知道一开始就用更加专业的工具来生成网页了。早知道就不自己搞一套了啊啊啊啊啊啊！</del></p>
+
+<h2>2018.7.4 更新</h2>
+
+<p>我放弃研究 source-highlight 了。我最后用了 PrismJS。</p>
+<!-- <p style="background:black;text-align:center;margin-top:20px;color:white;"><date>2018-07-02</date></p> -->
+
+<script src='/js/prism.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<table class='prev-next'><tr>
+<td><a href='/blog/20171018/'>&larr; Linux 下的进程持久化</a></td>
+<td><a href='/blog/20180706/'>在 MySQL 里，别用“utf8”！用“utf8mb4”！ &rarr;</a></td>
+</tr></table>
+
+<!--- <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sakura111.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
+</article>
+<footer>
+  <ul>
+   <li><a href="/"> Index </a></li>
+   <li><a href="/blog/"> Blog </a></li>
+   <li><a href="/msg/"> Message </a></li>
+  </ul>
+</footer>
+
+</body></html>

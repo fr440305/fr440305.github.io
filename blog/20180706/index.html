@@ -1,0 +1,174 @@
+<!doctype html>
+<html> <head>
+<meta charset='utf-8'>
+<meta name='viewport' content='initial-scale=1.0'>
+<title>在 MySQL 里，别用“utf8”！用“utf8mb4”！</title>
+<link rel='icon' size='32x32' href='/favicon.png'>
+<link rel='icon shortcut' type='image/ico' href='/favicon.png'>
+<link rel='apple-touch-icon' href='/favicon.png'>
+
+ <link rel='stylesheet' type='text/css' href='/css/global.css'>
+ <link rel='stylesheet' type='text/css' href='/css/prism.css'>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-120042471-1');
+</script>
+
+</head> <body>
+
+<article><h1>在 MySQL 里，别用“utf8”！用“utf8mb4”！</h1>
+
+<p>（注：本贴译自 Medium，原作者为 Adam Hooper。<a href='https://medium.com/@adamhooper/in-mysql-never-use-utf8-use-utf8mb4-11761243e434'>原文链接在这里</a>。）</p>
+
+<p>今日 Bug：我试图将一段 UTF-8 字符串保存到一个以“utf8”编码的 MariaDB 中，然后 Rails 报告了一个古怪的错误：</p>
+
+<pre><code class='lang-Bash'>Incorrect string value: ‘\xF0\x9F\x98\x83 <…’ for column ‘summary’ at row 1
+</code></pre>
+
+<p>咱的客户端是 UTF-8 的，服务器也是 UTF-8 的，数据库也是 UTF-8 校勘的 UTF-8 数据库。这字符串，“😃 &lt;…”，也是一段正儿八经的 UTF-8 字符串。</p>
+
+<p>然而此处有坑：MySQL 的“utf8”，根本不是 UTF-8。</p>
+
+<p>MySQL的“utf8”编码，只会为每个字符都分配三字节空间。然而，真正的 UTF-8 编码——包括你在内的所有人都用着的那种——需要至多四个字节来储存字符。</p>
+
+<p>MySQL 的开发者们一直没有修复这个 Bug。他们只是在 2010 年发布了一个变通方案：一个叫“utf8mb4”的新字符集（译者：我觉得这里应该是“字符编码”而不是“字符集”）。</p>
+
+<p>当然，他们从未将这件事广而告之（也许是因为这太羞耻了）。现在，网上的许多教程都建议 MySQL 用户使用“utf8”。他们都错了。</p>
+
+<p>简而言之：</p>
+
+<ul>
+<li>MySQL 的“utf8mb4”指的就是“UTF-8”。</li>
+<li>MySQL 的“utf8”指的是“一个 MySQL 自己搞一套的字符编码”。许多正儿八经的 UTF-8 字符都没有覆盖在这套编码里。</li>
+</ul>
+
+<p>咱在这儿把话搁得绝对点儿吧：所有正在使用“utf8”编码的 MySQL 以及 MariaDB 用户，都本该用“utf8mb4”。没有人应该用“utf8”。</p>
+
+<h2>编码是什么？UTF-8 又是什么？</h2>
+
+<p>Joel on Software（《Joel 谈软件》）写了一篇我最爱的简介。我在此贴出节选：</p>
+
+<p>Computers（电脑）以 0 和 1 来储存文本。这段话的第一个字符，在电脑里被存成了“01000011”，然后你的电脑就在屏幕上画了个“C”。你的电脑是通过以下两步以选出“C”的：</p>
+
+<ol>
+<li>你的电脑读取了“01000011”，然后决定出来，这是数字 67。这是因为 67 被编码成了“01000011”。</li>
+<li>你的电脑在 Unicode 字符集里找到第 67 号字符，然后它发现，67 号字符是“C”。</li>
+</ol>
+
+<p>同样的事情，也发生在我把“C”输入到我电脑里的时候：</p>
+
+<ol>
+<li>我的电脑在 Unicode 字符集里，把“C”映射（&rarr;）到数字 67。</li>
+<li>我的电脑把 67 编码成“01000011”，并将其发送到这个网络服务器。</li>
+</ol>
+
+<p>字符集是一个已解决的问题。互联网上的几乎所有程序都在使用 Unicode 字符集，因为没必要用别的。</p>
+
+<p>然而，字符编码并不是想用啥就用啥的（But encoding is more of a judgement call 怎么翻译啊……求大佬指教）。Unicode 中有着数以百万计的字符（“C”和“💩”只是其中两个）。最简单的编码，UTF-32，对每个字符都分配了四个字节的空间。这十分简单粗暴，因为几个世代以来，电脑一直在四字节四字节地处理着数据。然而这并不实用：这是对空间的浪费。</p>
+
+<p>UTF-8 节省空间。在 UTF-8 中，以“C”为例的大多数字符占 8 位，而以“💩”为例的少数字符占 32 位。其他字符占 16 位或 24 位。一篇像这样的博客，以 UTF-8 编码，则其所占空间将只有以 UTF-32 编码的四分之一。因此，这篇博客的加载速度会快四倍。</p>
+
+<p>你或许并未意识到，我们的电脑在幕后悄然支持着 UTF-8 编码。若它们不支持，则当我输入“💩”的时候，你就只能看见一堆乱码了。</p>
+
+<p>MySQL 的“utf8”编码并不统一于其他的程序。当你把“💩”输进去，它就出错了。</p>
+
+<h2>一点点 MySQL 的历史</h2>
+
+<p>为什么 MySQL 的开发者们将“utf8”搞成这不合标准的样子呢？我们可以从提交记录中窥其一二。</p>
+
+<p>MySQL 从版本 4.1 开始支持 UTF-8。那是 2003 年——今日的 UTF-8 标准：RFC 3629，在那时还没有出台呢。</p>
+
+<p>旧日的 UTF-8 标准，RFC 2279，支持为每个字符分配至多 6 字节的空间。MySQL 的开发者们，在 2002 年 3 月 28 日，将 RFC 2279 实现在了 MySQL 的首个预预发布的版本中（译注：原文是 pre-pre-release version）。</p>
+
+<p>接着，在 9 月份，有人做了一个<a href='https://github.com/mysql/mysql-server/commit/43a506c0ced0e6ea101d3ab8b4b423ce3fa327d0'>扑朔迷离的，只改了一个字节的提交</a>：“MySQL 现在只认每字符占三字节的字符序列了。”</p>
+
+<p><!——- <img src="/blog/img/180706.png" alt="Pic: one-byte-tweak" title="" /> —></p>
+
+<p>提交者何人？何目的？我不知道。当 MySQL 开发组将代码迁移到 Git 的时候，那些旧作者的名字似乎都已经遗失了（MySQL 之前用的是 BitKeeper，跟 Linux 内核一样）。2003 年 9 月的邮件列表里，也没有对该提交的解释。</p>
+
+<p>但是我能猜到。</p>
+
+<p>2002 年，MySQL 对那些可以保证自己数据表中的每一行都有相同字节数的用户们，提供了更快的响应速度。而保证字节数相同的方法，就是用 CHAR 来声明文本行。同一张表中的所有 CHAR 行，永远有相同的字节数。如果这一行的字符少了，MySQL 就会在行尾加一堆空格；如果这一行的字符多了，MySQL 就会把末尾多出来的字符截掉。</p>
+
+<p>当 MySQL 开发者们首次尝试旧版本的，为每一字符分配至多 6 字节空间的 UTF-8 标准的时候，他们似乎遇上了问题：一个 CHAR(1) 的行要占 6 字节，一个 CHAR(2) 的行要占 12 字节，以此类推。（译：没看懂，他们究竟遇上了什么问题？是浪费空间的意思吗？）</p>
+
+<p>说得明白点：那个最开始的行为，也就是那个预预发布版本里的行为，是正确的。这一行为，文档良好，适配广泛，任何懂 UTF-8 的人都能看出这是对的。</p>
+
+<p>但显然，一个 MySQL 开发者（或是商人）考虑到，可能会有一两个用户做如下两件事：</p>
+
+<ol>
+<li>声明了 CHAR 行。（CHAR 行在今天已经算是遗物了。曾经，在 MySQL 里用 CHAR 行会更快，但 2005 年以后，就不会了）</li>
+<li>把那些 CHAR 行的编码设成了“utf8”。</li>
+</ol>
+
+<p>我的猜测是，MySQL 开发者们破坏了他们的“utf8”编码，以帮助那些（一）试图节省空间、优化速度的人，以及（二）败于节省空间、优化速度的人。</p>
+
+<p>没人优化成功。那些想更快更省空间的用户们，即使用了“utf8”的 CHAR 行，也仍是错的，因为那些行仍旧比它们本该有的字节数要更多，也要比它们本该有的速度要更慢。那些想把事情做正确的开发者们，也不该用“utf8”，因为它无法储存“💩”。</p>
+
+<p>那时，一旦 MySQL 发布了这不合标准的字符编码，它就再也无法修复这编码了：这将强迫所有用户，重新构建所有的数据库。最终：MySQL 在 2010 年发布了对 UTF-8 的支持，但却是以一个不同的名字：“utf8mb4”。</p>
+
+<h2>这一 Bug 如此令人丧气的原因</h2>
+
+<p>显然，这一整周，我都感到十分丧气。找出这一 Bug 十分困难，因为我被那个“utf8”的名字愚弄了。而且被愚弄的也不只有我一个——我找到的几乎所有在线教程，都把“utf8”当成了，唔，UTF-8。</p>
+
+<p>“utf8”这一名字，一直以来都是个错误。这就是一 MySQL 自己搞出来的字符编码。它不仅没有解决已有的问题，而且还带来了新的问题。</p>
+
+<p>简直跟假广告一样。</p>
+
+<h2>我受到的教训</h2>
+
+<ol>
+<li>数据库系统会有很多小 Bug ，也会发生很多小怪事。通过避免使用某些数据库系统，你就可以避免很多问题。</li>
+<li>如果你真的需要用数据库，别用 MySQL，别用 MariaDB，用 PostgreSQL。</li>
+<li>如果你真的需要用 MySQL 或者 MariaDB，绝不要用“utf8”。如果你想用 UTF-8 编码的话，永远用“utf8mb4”。为了避免令人头疼的问题，现在马上转换编码吧。</li>
+</ol>
+
+<h2>勘误 &amp; 更新</h2>
+
+<p>这是我第一次翻这种文章。我知道，我肯定会出错。如果你发现错误，请在<a href="/msg/">留言板里留言</a>。我会尽快在此处修正。谢谢你的阅读！</p>
+<!-- <p style="background:black;text-align:center;margin-top:20px;color:white;"><date>2018-07-06</date></p> -->
+
+<script src='/js/prism.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<table class='prev-next'><tr>
+<td><a href='/blog/20180702/'>&larr; LeetCode (4) Find Median in Two Sorted Arrays</a></td>
+<td><a href='/blog/20180710/'>MathJax 数学符号测试 &rarr;</a></td>
+</tr></table>
+
+<!--- <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sakura111.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
+</article>
+<footer>
+  <ul>
+   <li><a href="/"> Index </a></li>
+   <li><a href="/blog/"> Blog </a></li>
+   <li><a href="/msg/"> Message </a></li>
+  </ul>
+</footer>
+
+</body></html>
