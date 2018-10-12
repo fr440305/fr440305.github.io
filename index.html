@@ -1,15 +1,14 @@
+ 
 <!doctype html>
 <html> <head>
 <meta charset='utf-8'>
 <meta name='viewport' content='initial-scale=1.0'>
-<title>Index</title>
 <link rel='icon' size='32x32' href='/favicon.png'>
 <link rel='icon shortcut' type='image/ico' href='/favicon.png'>
 <link rel='apple-touch-icon' href='/favicon.png'>
 
- <link rel='stylesheet' type='text/css' href='/css/global.css'>
- <link rel='stylesheet' type='text/css' href='/css/index.css'>
-
+<link rel='stylesheet' type='text/css' href="/css/global.css">
+<link rel='stylesheet' type='text/css' href="/css/prism.css">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
@@ -22,25 +21,42 @@
 
 </head> <body>
 
-<article><h1>Index</h1>
+<article>
+
+<h1>Index</h1>
+
+<!-- begin intro -->
+
+<!-- end intro -->
+
 
 	<p id="id_20180710">2018-07-10<br/>
-	<a href='/blog/20180710/'>MathJax 数学符号测试</a></p>
+	<a href='/blogs/20180710.html'>MathJax 数学符号测试</a></p>
 
 	<p id="id_20180706">2018-07-06<br/>
-	<a href='/blog/20180706/'>在 MySQL 里，别用“utf8”！用“utf8mb4”！</a></p>
+	<a href='/blogs/20180706.html'>在 MySQL 里，别用“utf8”！用“utf8mb4”！</a></p>
 
 	<p id="id_20171018">2017-10-18<br/>
-	<a href='/blog/20171018/'>Linux 下的进程持久化</a></p>
+	<a href='/blogs/20171018.html'>Linux 下的进程持久化</a></p>
+
 
 </article>
 <footer>
 <ul>
 <li><a href='/'>Index</a></li>
-<li><a href='/blog/'>Blogs</a></li>
-<!--- <li><a href="https://github.com/fr440305/">GitHub</a></li> -->
+<li><a href='/blogs/'>Blogs</a></li>
 <li><a href="/hello/">Hello</a></li>
 </ul>
 </footer>
 
+<script>
+	var h1s = document.getElementsByTagName("H1");
+	if (h1s.length >= 0) {
+		document.title = h1s[0].innerText;
+	} else {
+		document.title = "fr440305's blog";
+	}
+</script>
+
 </body></html>
+ 

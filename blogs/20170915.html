@@ -1,15 +1,14 @@
+ 
 <!doctype html>
 <html> <head>
 <meta charset='utf-8'>
 <meta name='viewport' content='initial-scale=1.0'>
-<title>毛毛虫</title>
 <link rel='icon' size='32x32' href='/favicon.png'>
 <link rel='icon shortcut' type='image/ico' href='/favicon.png'>
 <link rel='apple-touch-icon' href='/favicon.png'>
 
- <link rel='stylesheet' type='text/css' href='/css/global.css'>
- <link rel='stylesheet' type='text/css' href='/css/prism.css'>
-
+<link rel='stylesheet' type='text/css' href="/css/global.css">
+<link rel='stylesheet' type='text/css' href="/css/prism.css">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
@@ -22,7 +21,9 @@
 
 </head> <body>
 
-<article><h1>毛毛虫</h1>
+<article>
+
+<h1>毛毛虫</h1>
 
 <p>很久以前，自己写过一些又羞耻又奇怪的东西。</p>
 
@@ -45,44 +46,34 @@
 <p>故事到这里真的就要结束了。对着自己的手机打这些东西真的很羞耻，但是那些卵孵化了。卵孵化之后，毛毛虫们，他的初恋的孩子们从卵里钻了出来。</p>
 
 <p>不久后，其中一个毛毛虫对他说：我喜欢你。然后故事几乎就回到了开头，永不完结。</p>
-<!-- <p style="background:black;text-align:center;margin-top:20px;color:white;"><date>2017-09-15</date></p> -->
 
-<script src='/js/prism.js'></script>
+
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
+
 <table class='prev-next'><tr>
-<td><a href='/blog/20170803/'>&larr; Mac OS 下的安装 Lisp 解释器</a></td>
-<td><a href='/blog/20171018/'>Linux 下的进程持久化 &rarr;</a></td>
+<td><a href='/blogs/20170803.html'>&larr; Mac OS 下的安装 Lisp 解释器</a></td>
+<td><a href='/blogs/20171018.html'>Linux 下的进程持久化 &rarr;</a></td>
 </tr></table>
 
-<!--- <div id="disqus_thread"></div>
-<script>
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://sakura111.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
 </article>
 <footer>
 <ul>
 <li><a href='/'>Index</a></li>
-<li><a href='/blog/'>Blogs</a></li>
-<!--- <li><a href="https://github.com/fr440305/">GitHub</a></li> -->
+<li><a href='/blogs/'>Blogs</a></li>
 <li><a href="/hello/">Hello</a></li>
 </ul>
 </footer>
 
+<script>
+	var h1s = document.getElementsByTagName("H1");
+	if (h1s.length >= 0) {
+		document.title = h1s[0].innerText;
+	} else {
+		document.title = "fr440305's blog";
+	}
+</script>
+
 </body></html>
+ 

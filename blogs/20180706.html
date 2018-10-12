@@ -1,15 +1,14 @@
+ 
 <!doctype html>
 <html> <head>
 <meta charset='utf-8'>
 <meta name='viewport' content='initial-scale=1.0'>
-<title>在 MySQL 里，别用“utf8”！用“utf8mb4”！</title>
 <link rel='icon' size='32x32' href='/favicon.png'>
 <link rel='icon shortcut' type='image/ico' href='/favicon.png'>
 <link rel='apple-touch-icon' href='/favicon.png'>
 
- <link rel='stylesheet' type='text/css' href='/css/global.css'>
- <link rel='stylesheet' type='text/css' href='/css/prism.css'>
-
+<link rel='stylesheet' type='text/css' href="/css/global.css">
+<link rel='stylesheet' type='text/css' href="/css/prism.css">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
@@ -22,7 +21,9 @@
 
 </head> <body>
 
-<article><h1>在 MySQL 里，别用“utf8”！用“utf8mb4”！</h1>
+<article>
+
+<h1>在 MySQL 里，别用“utf8”！用“utf8mb4”！</h1>
 
 <p>（注：本贴译自 Medium，原作者为 Adam Hooper。<a href='https://medium.com/@adamhooper/in-mysql-never-use-utf8-use-utf8mb4-11761243e434'>原文链接在这里</a>。）</p>
 
@@ -132,44 +133,34 @@
 <h2>勘误 &amp; 更新</h2>
 
 <p>这是我第一次翻这种文章。我知道，我肯定会出错。如果你发现错误，请在<a href="/msg/">留言板里留言</a>。我会尽快在此处修正。谢谢你的阅读！</p>
-<!-- <p style="background:black;text-align:center;margin-top:20px;color:white;"><date>2018-07-06</date></p> -->
 
-<script src='/js/prism.js'></script>
+
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
+
 <table class='prev-next'><tr>
-<td><a href='/blog/20180702/'>&larr; LeetCode (4) Find Median in Two Sorted Arrays</a></td>
-<td><a href='/blog/20180710/'>MathJax 数学符号测试 &rarr;</a></td>
+<td><a href='/blogs/20180702.html'>&larr; LeetCode (4) Find Median in Two Sorted Arrays</a></td>
+<td><a href='/blogs/20180710.html'>MathJax 数学符号测试 &rarr;</a></td>
 </tr></table>
 
-<!--- <div id="disqus_thread"></div>
-<script>
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://sakura111.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
 </article>
 <footer>
 <ul>
 <li><a href='/'>Index</a></li>
-<li><a href='/blog/'>Blogs</a></li>
-<!--- <li><a href="https://github.com/fr440305/">GitHub</a></li> -->
+<li><a href='/blogs/'>Blogs</a></li>
 <li><a href="/hello/">Hello</a></li>
 </ul>
 </footer>
 
+<script>
+	var h1s = document.getElementsByTagName("H1");
+	if (h1s.length >= 0) {
+		document.title = h1s[0].innerText;
+	} else {
+		document.title = "fr440305's blog";
+	}
+</script>
+
 </body></html>
+ 

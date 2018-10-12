@@ -1,15 +1,14 @@
+ 
 <!doctype html>
 <html> <head>
 <meta charset='utf-8'>
 <meta name='viewport' content='initial-scale=1.0'>
-<title>Mac OS 下的安装 Lisp 解释器</title>
 <link rel='icon' size='32x32' href='/favicon.png'>
 <link rel='icon shortcut' type='image/ico' href='/favicon.png'>
 <link rel='apple-touch-icon' href='/favicon.png'>
 
- <link rel='stylesheet' type='text/css' href='/css/global.css'>
- <link rel='stylesheet' type='text/css' href='/css/prism.css'>
-
+<link rel='stylesheet' type='text/css' href="/css/global.css">
+<link rel='stylesheet' type='text/css' href="/css/prism.css">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
@@ -22,7 +21,9 @@
 
 </head> <body>
 
-<article><h1>Mac OS 下的安装 Lisp 解释器</h1>
+<article>
+
+<h1>Mac OS 下的安装 Lisp 解释器</h1>
 
 <p>我用的电脑是苹果货。Mac OS 的话，先装个 <a href='https://brew.sh'>homebrew</a>。</p>
 
@@ -75,44 +76,34 @@ $ clisp
 Bye.
 user@host:directory $
 </pre>
-<!-- <p style="background:black;text-align:center;margin-top:20px;color:white;"><date>2017-08-03</date></p> -->
 
-<script src='/js/prism.js'></script>
+
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
 
 <table class='prev-next'><tr>
 
-<td><a href='/blog/20170915/'>毛毛虫 &rarr;</a></td>
+<td><a href='/blogs/20170915.html'>毛毛虫 &rarr;</a></td>
 </tr></table>
 
-<!--- <div id="disqus_thread"></div>
-<script>
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://sakura111.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
 </article>
 <footer>
 <ul>
 <li><a href='/'>Index</a></li>
-<li><a href='/blog/'>Blogs</a></li>
-<!--- <li><a href="https://github.com/fr440305/">GitHub</a></li> -->
+<li><a href='/blogs/'>Blogs</a></li>
 <li><a href="/hello/">Hello</a></li>
 </ul>
 </footer>
 
+<script>
+	var h1s = document.getElementsByTagName("H1");
+	if (h1s.length >= 0) {
+		document.title = h1s[0].innerText;
+	} else {
+		document.title = "fr440305's blog";
+	}
+</script>
+
 </body></html>
+ 
