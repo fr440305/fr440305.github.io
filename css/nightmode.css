@@ -1,6 +1,6 @@
 body.nightmode {
-	background: black;
-	color: #ccc;
+	background: #111;
+	color: #bbb;
 }
 
 .nightmode a {
@@ -8,5 +8,5 @@ body.nightmode {
 }
 
 .nightmode blockquote {
-	background: #111;
+	background: #333;
 }
