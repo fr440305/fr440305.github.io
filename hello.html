@@ -76,8 +76,9 @@
 	}
 	console.log("After init: " + at_night);
 
-	document.getElementById("tog_night_mode").addEventListener("click", function(){
+	document.getElementById("tog_night_mode").addEventListener("click", function() {
 		console.log("Before change: " + at_night);
+		//at_night = (at_night === "true") ? "false" : "true";
 		at_night = {
 			"true": "false",
 			"false": "true"
