@@ -17,7 +17,7 @@
       <pubDate>Sun, 18 Aug 2019 16:17:25 -0700</pubDate>
       
       <guid>https://blog.wshtan.net/posts/comment-ok/</guid>
-      <description>&lt;p&gt;评论系统已经装好了，所以现在可以评论了（大概）。&lt;/p&gt;</description>
+      <description>&lt;p&gt;评论系统已经装好了，所以现在可以评论了（大概）。附带上让 Isso 在&lt;strong&gt;本机&lt;/strong&gt;运行的简单的操作步骤（需要预装 Docker）。&lt;/p&gt;</description>
     </item>
     
     <item>
