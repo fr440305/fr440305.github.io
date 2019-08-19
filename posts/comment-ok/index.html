@@ -1,0 +1,201 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>I&#39;LL BE HERE</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="fr440305" />
+  <meta name="generator" content="Hugo 0.56.0-DEV" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://blog.wshtan.net/css/styles.css" />
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120042471-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://blog.wshtan.net/">I&rsquo;LL BE HERE</a>
+            </h1>
+
+      <ul id="social-media">
+         
+        <li><a href="https://www.linkedin.com/in/w-tan-644836189"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/fr440305"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+           
+      </ul>
+      
+      <p><em>I am a programmer.</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/posts/index.html">
+                <i class="fa-li fa  fa-lg"></i><span>Archives</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://wshtan.net/">
+                <i class="fa-li fa  fa-lg"></i><span>Main-Site</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/tags/index.html">
+                <i class="fa-li fa  fa-lg"></i><span>Tags</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Comment Ok</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-08-18T16:17:25-07:00">Aug 18, 2019</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://blog.wshtan.net/tags/life/">#life</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>评论系统已经装好了，所以现在可以评论了（大概）。</p>
+
+<p>本来想用 Disqus 当评论系统，但是我发现，现在用 Disqus 居然要钱了。
+虽然头 30 天能免费用，但是之后要 9 块钱（美金）一个月。</p>
+
+<p>想了一下，决定把评论系统放在自己的服务器里。然后找到了一个叫
+<a href="https://posativ.org/isso/">Isso</a> 的东西。这个就相当与能放在自己服务器里的 Disqus。
+用这个的话，读者无需注册就可以发表评论。真是好东西。</p>
+
+<p>安装过程也超简单。Docker 就是方便，妈妈再也不用担心咱依赖装不好了。
+如果服务器上装了 Docker，那么只要像这样一下——</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/posativ/isso.git
+cd ./isso
+
+<span style="color:#75715e"># 因为依赖不少，所以如果网络不好的话，需要等一段时间</span>
+sudo docker build . -t isso
+
+<span style="color:#75715e"># 将容器中的 8080 端口映射到本机的 9090 端口</span>
+sudo docker run -d --rm --name isso -p <span style="color:#ae81ff">127</span>.0.0.1:9090:8080 -v /opt/isso:/config -v /opt/isso:/db isso</code></pre></div>
+<p>—— Isso 就跑起来啦！让我们检验一下吧。用浏览器打开 <code>http://127.0.0.1:9090/</code>，应该就会看到 Bad Request 之类的文字；
+打开 <code>http://127.0.0.1:9090/js/embed.min.js</code> 的话，应该就会看到一堆乱七八糟的 JavaScript。如果这样，
+就证明安装真的成功了。</p>
+
+<p>接下来的任务就是把 Isso 的评论框放到网页里。
+为了说明简单，我假设访问 <code>http://127.0.0.1:8080/</code> 可以浏览网站内容；</p>
+
+<p>首先，要把 Isso 的评论框放到网页里面。打开需要放置评论框的网页，然后在相应位置插入：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">data-isso</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://127.0.0.1:9090/&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://127.0.0.1:9090/js/embed.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;isso-thread&#34;</span>&gt;&lt;/<span style="color:#f92672">section</span>&gt;</code></pre></div>
+<p>然后在浏览器中打开这个网页，应该就可以看到，评论框已经有了。</p>
+
+<p>但是，现在试着发评论的话，就会发现无法发送。因为评论框是通过 XmlHttpRequest 向评论系统（127.0.0.1：9090）
+发送消息的。但是我们的网页站点 <code>127.0.0.1：8080</code> 与评论系统的站点 <code>127.0.0.1:9090</code> 不是相同的站点，所以，
+在默认情况下，因为浏览器禁止跨域 XmlHttpRequest，所以评论发送就会失败。</p>
+
+<p>接下来我们就要通过编辑 Isso 的配置文件来解决跨域问题。
+打开 <code>/opt/isso/</code> 文件夹，在里面新建一个文本文件 <code>isso.cfg</code>，打开并插入文本</p>
+
+<pre><code>[general]
+
+dbpath = /db/comments.db
+
+; 注意：是网页站点的网址！是 8080 而不是 9090！
+host = http://127.0.0.1:8080
+
+</code></pre>
+
+<p>这样，<a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> 的网页就可以通过 XmlHttpRequest 来访问 <a href="http://127.0.0.1:9090">http://127.0.0.1:9090</a> 的内容了。</p>
+
+<p>更新了配置文件之后，我们或许需要重启 Isso：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo docker restart isso</code></pre></div>
+<p>重启以后，再一次用浏览器打开网页站点 <code>http://127.0.0.1:8080/</code>，现在，应该就 OK 了。
+注意，<code>127.0.0.1</code> 不能改成别的东西。比如，<code>http://localhost:8080/</code> 都不行。</p>
+
+<p>以上就是简单的操作步骤。更完善的步骤，比如用 PyPi 的安装方法、配置文件的格式与条目、
+评论的管理，请见 <a href="https://posativ.org/isso/docs/">https://posativ.org/isso/docs/</a>。</p>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.wshtan.net/posts/new-start/"><i class="fa fa-chevron-circle-left"></i> New Start</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+    <script data-isso="https://isso-blog-comments.wshtan.net/"
+	            src="https://isso-blog-comments.wshtan.net/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2019 - fr440305 | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.wshtan.net/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://blog.wshtan.net/js/scripts.js"></script>
+</body>
+
+</html>
