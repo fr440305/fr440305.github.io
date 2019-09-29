@@ -1,0 +1,228 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>I&#39;LL BE HERE</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="fr440305" />
+  <meta name="generator" content="Hugo 0.56.0-DEV" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://blog.wshtan.net/css/styles.css" />
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120042471-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://blog.wshtan.net/">I&rsquo;LL BE HERE</a>
+            </h1>
+
+      <ul id="social-media">
+         
+        <li><a href="https://www.linkedin.com/in/w-tan-644836189"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/fr440305"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+           
+      </ul>
+      
+      <p><em>I am a programmer.</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/posts/index.html">
+                <i class="fa-li fa  fa-lg"></i><span>Archives</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://wshtan.net/">
+                <i class="fa-li fa  fa-lg"></i><span>Main-Site</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/tags/index.html">
+                <i class="fa-li fa  fa-lg"></i><span>Tags</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Sum of One over Factorials</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-09-28T16:56:49-07:00">Sep 28, 2019</time>
+        </li>
+        
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>最近发现了两个挺有趣的式子：</p>
+
+<p>1/(1!) + 1/(3!) + 1/(5!) + 1/(7!) + &hellip; = e/2 - 1/(2e)</p>
+
+<p>1/(0!) + 1/(2!) + 1/(4!) + 1/(6!) + &hellip; = e/2 + 1/(2e)</p>
+
+<p>怎么发现的呢？看到这个结构的话，就是泰勒展开吧。看到奇偶交替的话，
+就会想到 sin 跟 cos 的泰勒展开吧。这么一看的话很显然呢，
+根本没有必要为此写一篇博客呢。想想我还真不行，明明就是很无聊的结果，
+但发现的以后，还是会很高兴。</p>
+
+<p>总之，先把 cos 的麦克劳林展开写出来：</p>
+
+<p>\begin{equation}
+    \cos x = \frac{x^0}{0!} - \frac{x^2}{2!} + \frac{x^4}{4!} -+ &hellip;
+\end{equation}</p>
+
+<p>当 \(x = i\) 时：</p>
+
+<p>\begin{align}
+    \cos i &amp;= \frac{i^0}{0!} - \frac{i^2}{2!} + \frac{i^4}{4!} -+ &hellip; \\<br />
+    \cos i &amp;= \frac{1}{0!} + \frac{1}{2!} + \frac{1}{4!} + &hellip; <br />
+\end{align}</p>
+
+<p>其中 \(i\) 是虚数单位，下同。</p>
+
+<p>然后，把 sin 的麦克劳林展开写出来：</p>
+
+<p>\begin{equation}
+    \sin x = \frac{x^1}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!} -+ &hellip;
+\end{equation}</p>
+
+<p>当 \(x = i\) 时：</p>
+
+<p>\begin{align}
+    \sin i &amp;= \frac{i^1}{1!} - \frac{i^3}{3!} + \frac{i^5}{5!} -+ &hellip; \\<br />
+    \sin i &amp;= (\frac{1}{1!} + \frac{1}{3!} + \frac{1}{5!} + &hellip;) i <br />
+\end{align}</p>
+
+<p>由（3）、（6）可知：</p>
+
+<p>\begin{align}
+    \cos i - i \sin i &amp;= (\frac{1}{0!} + \frac{1}{2!} + \frac{1}{4!} + &hellip;) - (\frac{1}{1!} + \frac{1}{3!} + \frac{1}{5!} + &hellip;) \cdot i^2 \\<br />
+        &amp;= (\frac{1}{0!} + \frac{1}{2!} + \frac{1}{4!} + &hellip;) + (\frac{1}{1!} + \frac{1}{3!} + \frac{1}{5!} + &hellip;) \\<br />
+        &amp;= (\frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + &hellip;) \\<br />
+    \cos i - i \sin i &amp;= e
+\end{align}</p>
+
+<p>对欧拉公式：</p>
+
+<p>\begin{equation}
+    e^{i \theta} = \cos \theta + i \sin \theta
+\end{equation}</p>
+
+<p>当 \(\theta = i\) 时：</p>
+
+<p>\begin{equation}
+    e^{-1} = \cos i + i \sin i
+\end{equation}</p>
+
+<p>联立（10）、（12），解得：</p>
+
+<p>\[
+    \begin{cases}
+        e = \cos i - i \sin i \\<br />
+        e^{-1} = \cos i + i \sin i
+    \end{cases}
+\]</p>
+
+<p>\[
+    \begin{cases}
+        \cos i = \frac{1}{0!} + \frac{1}{2!} + \frac{1}{4!} + &hellip; = \frac{e}{2} + \frac{1}{2e}\\<br />
+        - i \sin i = \frac{1}{1!} + \frac{1}{3!} + \frac{1}{5!} + &hellip; = \frac{e}{2} - \frac{1}{2e}
+    \end{cases}
+\]</p>
+
+<p>完。</p>
+
+<p>好久没写博客了。就算随便写一篇用来凑数的，也总比不写要好。</p>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+    TeX: {
+        equationNumbers: {
+            autoNumber: "AMS"
+        }
+    }
+});
+</script>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.wshtan.net/posts/weird-dream/"><i class="fa fa-chevron-circle-left"></i> Weird Dream</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+    <script data-isso="https://isso-blog-comments.wshtan.net/"
+	            src="https://isso-blog-comments.wshtan.net/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2019 - fr440305 | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.wshtan.net/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://blog.wshtan.net/js/scripts.js"></script>
+</body>
+
+</html>
