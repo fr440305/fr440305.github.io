@@ -5,8 +5,8 @@
     <link>https://blog.wshtan.net/tags/</link>
     <description>Recent content in Tags on I&#39;LL BE HERE</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2019 - fr440305</copyright>
-    <lastBuildDate>Sun, 18 Aug 2019 16:17:25 -0700</lastBuildDate>
+    <copyright>Copyright &amp;copy; 2019 - fr440305 | Theme: Kiera</copyright>
+    <lastBuildDate>Sun, 08 Dec 2019 13:56:18 -0800</lastBuildDate>
     
 	<atom:link href="https://blog.wshtan.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>life</title>
       <link>https://blog.wshtan.net/tags/life/</link>
-      <pubDate>Sun, 18 Aug 2019 16:17:25 -0700</pubDate>
+      <pubDate>Sun, 08 Dec 2019 13:56:18 -0800</pubDate>
       
       <guid>https://blog.wshtan.net/tags/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nonsense</title>
+      <link>https://blog.wshtan.net/tags/nonsense/</link>
+      <pubDate>Sun, 08 Dec 2019 13:56:18 -0800</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/nonsense/</guid>
       <description></description>
     </item>
     

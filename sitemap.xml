@@ -4,19 +4,42 @@
   
   <url>
     <loc>https://blog.wshtan.net/</loc>
-    <lastmod>2019-10-31T17:47:47-07:00</lastmod>
+    <lastmod>2019-12-08T13:56:18-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/posts/nonsense-dec-2019/</loc>
+    <lastmod>2019-12-08T13:56:18-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/posts/</loc>
+    <lastmod>2019-12-08T13:56:18-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/tags/</loc>
+    <lastmod>2019-12-08T13:56:18-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/tags/life/</loc>
+    <lastmod>2019-12-08T13:56:18-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/tags/nonsense/</loc>
+    <lastmod>2019-12-08T13:56:18-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.wshtan.net/posts/notes-on-atrq-ch123/</loc>
     <lastmod>2019-10-31T17:47:47-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.wshtan.net/posts/</loc>
-    <lastmod>2019-10-31T17:47:47-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -32,18 +55,6 @@
   <url>
     <loc>https://blog.wshtan.net/posts/comment-ok/</loc>
     <lastmod>2019-08-18T16:17:25-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.wshtan.net/tags/</loc>
-    <lastmod>2019-08-18T16:17:25-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.wshtan.net/tags/life/</loc>
-    <lastmod>2019-08-18T16:17:25-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
