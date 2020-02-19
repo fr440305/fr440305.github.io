@@ -6,10 +6,19 @@
     <description>Recent content in Posts on I&#39;LL BE HERE</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - fr440305 | Theme: Kiera</copyright>
-    <lastBuildDate>Sun, 29 Dec 2019 22:34:40 -0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2020 00:02:00 -0800</lastBuildDate>
     
 	<atom:link href="https://blog.wshtan.net/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Goal in 2020</title>
+      <link>https://blog.wshtan.net/posts/goals-in-2020/</link>
+      <pubDate>Wed, 19 Feb 2020 00:02:00 -0800</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/goals-in-2020/</guid>
+      <description>&lt;p&gt;今年，希望自己能……&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>An Issue I Met When Using Gorilla Sessions Go Package</title>
