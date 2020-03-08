@@ -13,7 +13,9 @@
 <link>https://blog.wshtan.net/posts/a-secret/</link>
 <pubDate>Sat, 07 Mar 2020 21:50:44 -0800</pubDate>
 <guid>https://blog.wshtan.net/posts/a-secret/</guid>
-<description>&lt;p&gt;最近发现了一个可以给 Hugo 博客站点加密的小工具。试一试。&lt;/p&gt;</description>
+<description>&lt;p&gt;最近发现了一个&lt;a href="https://github.com/Li4n0/hugo_encryptor"&gt;可以给 Hugo 博客站点加密的小工具&lt;/a&gt;。试一试。&lt;/p&gt;
+
+&lt;p&gt;密码是：&lt;code&gt;password&lt;/code&gt;。&lt;/p&gt;</description>
 </item>
 <item>
 <title>The Goal in 2020</title>
