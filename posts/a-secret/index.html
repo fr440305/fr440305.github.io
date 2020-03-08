@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>I'LL BE HERE</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="The HTML5 Herald" name="description"/>
+<meta content="fr440305" name="author"/>
+<meta content="Hugo 0.56.0-DEV" name="generator"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" rel="stylesheet"/>
+<link href="https://blog.wshtan.net/css/styles.css" rel="stylesheet" type="text/css"/>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120042471-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+</head>
+<body>
+<div id="container">
+<header>
+<h1>
+<a href="https://blog.wshtan.net/">I’LL BE HERE</a>
+</h1>
+<ul id="social-media">
+</ul>
+</header>
+<nav>
+<ul>
+<li>
+<a class="" href="https://blog.wshtan.net/posts/index.html">
+<i class="fa-li fa fa-lg"></i><span>Archives</span>
+</a>
+</li>
+<li>
+<a class="" href="https://blog.wshtan.net/tags/index.html">
+<i class="fa-li fa fa-lg"></i><span>Tags</span>
+</a>
+</li>
+</ul>
+</nav>
+<main>
+<article>
+<h1>A Secret</h1>
+<aside>
+<ul>
+<li>
+<time class="post-date" datetime="2020-03-07T21:50:44-08:00">Mar 7, 2020</time>
+</li>
+<li>1 min read</li>
+</ul>
+</aside>
+<p>最近发现了一个可以给 Hugo 博客站点加密的小工具。试一试。</p>
+<div class="hugo-encryptor-container">
+<div class="hugo-encryptor-prompt">
+<p>文章的部分内容被密码保护：</p>
+</div>
+<div class="hugo-encryptor-form">
+<input class="hugo-encryptor-input" placeholder="请输入密码"/>
+<input class="hugo-encryptor-button" onclick="_click_handler(this)" type="button" value="点击验证"/>
+</div>
+<div class="hugo-encryptor-cipher-text" style="display: none;">2J7tqMqfIOaHlDkPvRRREiKQszrahf6sCGoGUs7u4GnEjNbiENDPP8MiudGt76OFxmgBjH7+nQ+Lb1uMKvE0UF2sZs+e6aVidQnX37FYQLDywYf0b6I0PgrDa2KOU2M0gG+SMlD4iQjoFJHtqKmwEvtOi4IZeehO/IQP3g5731+aUnqMG8eSbDAuZjUT0m2gM8RAmbuHuys67pM8EJCbtmnR04XNY2DJfYPXDfLVPIMwUQE1VGrra5j4O06ufB6RxO0XxCYa1ZHlV53ljrQpn4n2JOrQpz674sSJyHHTNRXVWOmPNDO65fJtWBKbzNioXZpIzF4nQH4IyMdFgvW1X+l1e/Zb1d/vFZA/vHYxC4DHvSUV62cDOIFDa9ERDMUH1G4GOa1zz35W6aJ2VEPneU9cMos0idHrI2TCYrtmjC/rHLehYLdjMqp9Eug8Qt8QwSPOf6BuJBKnWuVo9KggYQ==</div>
+</div>
+</article>
+<section class="post-nav">
+<ul>
+<li>
+<a href="https://blog.wshtan.net/posts/goals-in-2020/"><i class="fa fa-chevron-circle-left"></i> The Goal in 2020</a>
+</li>
+</ul>
+</section>
+<script data-isso="https://isso-blog-comments.wshtan.net/" src="https://isso-blog-comments.wshtan.net/js/embed.min.js"></script>
+<section id="isso-thread"></section>
+</main>
+<footer>
+<h6>Copyright © 2020 - fr440305 | Theme: Kiera | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.wshtan.net/index.xml">Subscribe</a></h6>
+</footer>
+</div>
+<script src="https://blog.wshtan.net/js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script><script>
+const _do_decrypt = function(encrypted, password) {
+  let key = CryptoJS.enc.Utf8.parse(password);
+  let iv = CryptoJS.enc.Utf8.parse(password.substr(16));
+
+  let decrypted_data = CryptoJS.AES.decrypt(encrypted, key, {
+    iv: iv,
+    mode: CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7
+  });
+  return decrypted_data.toString(CryptoJS.enc.Utf8);
+};
+
+const _click_handler = function(element) {
+  let parent = element.parentNode.parentNode;
+  let encrypted = parent.querySelector(
+    ".hugo-encryptor-cipher-text").innerText;
+  let password = parent.querySelector(
+    ".hugo-encryptor-input").value;
+  password = CryptoJS.MD5(password).toString();
+
+  let index = -1;
+  let elements = document.querySelectorAll(
+    ".hugo-encryptor-container");
+  for (index = 0; index < elements.length; ++index) {
+    if (elements[index].isSameNode(parent)) {
+      break;
+    }
+  }
+
+  let decrypted = "";
+  try {
+    decrypted = _do_decrypt(encrypted, password);
+  } catch (err) {
+    console.error(err);
+    alert("Failed to decrypt.");
+    return;
+  }
+
+  if (!decrypted.includes("--- DON'T MODIFY THIS LINE ---")) {
+    alert("Incorrect password.");
+    return;
+  }
+
+  let storage = localStorage;
+
+  let key = location.pathname + ".password." + index;
+  storage.setItem(key, password);
+  parent.innerHTML = decrypted;
+}
+
+window.onload = () => {
+  let index = -1;
+  let elements = document.querySelectorAll(
+    ".hugo-encryptor-container");
+
+  while (1) {
+    ++index;
+
+    let key = location.pathname + ".password." + index;
+    let password = localStorage.getItem(key);
+
+    if (!password) {
+      break;
+
+    } else {
+      console.log("Found password for part " + index);
+
+      let parent = elements[index];
+      let encrypted = parent.querySelector(".hugo-encryptor-cipher-text").innerText;
+      let decrypted = _do_decrypt(encrypted, password);
+      elements[index].innerHTML = decrypted;
+    }
+  }
+};</script></body>
+</html>

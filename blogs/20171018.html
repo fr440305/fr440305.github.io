@@ -1,115 +1,77 @@
- 
-<!doctype html>
+<!DOCTYPE html>
 <html> <head>
-<meta charset='utf-8'>
-<meta name='viewport' content='initial-scale=1.0'>
-<link rel='icon' size='32x32' href='/favicon.png'>
-<link rel='icon shortcut' type='image/ico' href='/favicon.png'>
-<link rel='apple-touch-icon' href='/favicon.png'>
-
-<link rel='stylesheet' type='text/css' href="/css/global.css">
-<link rel='stylesheet' type='text/css' href="/css/nightmode.css">
-<link rel='stylesheet' type='text/css' href="/css/prism.css">
-
+<meta charset="utf-8"/>
+<meta content="initial-scale=1.0" name="viewport"/>
+<link href="/favicon.png" rel="icon" size="32x32"/>
+<link href="/favicon.png" rel="icon shortcut" type="image/ico"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="/css/global.css" rel="stylesheet" type="text/css"/>
+<link href="/css/nightmode.css" rel="stylesheet" type="text/css"/>
+<link href="/css/prism.css" rel="stylesheet" type="text/css"/>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 	gtag('config', 'UA-120042471-1');
 </script>
-
 </head> <body>
-
 <article>
-
 <h1>Linux 下的进程持久化</h1>
-
 <p>本文只介绍：使用“&amp;”，nohup，sudo -b 命令，使进程一直在后台运行的方法。这些命令，对想要在 Linux 上运行小型网络服务器，但不想学习 Supervisor 和 Docker 之类的人，可能会有用。</p>
-
 <h2>Linux 下的 &amp; 命令</h2>
-
 <p>假设服务器叫 a.out 好了。输入：</p>
-
-<pre><code class='lang-bash'>user@host $ ./a.out
+<pre><code class="lang-bash">user@host $ ./a.out
 </code></pre>
-
 <p>就可以让 a.out 运行起来。但是这样的话，命令行会一直卡在那里。因为这是服务器，是要跑三五年的。如果想让 a.out 在后台运行，该怎么办呢？方法是输入：</p>
-
-<pre><code class='lang-bash'>user@host $ ( ./a.out >/dev/null 2>/dev/null ) &
+<pre><code class="lang-bash">user@host $ ( ./a.out &gt;/dev/null 2&gt;/dev/null ) &amp;
 user@host $
 </code></pre>
-
 <p>多加了个“&amp;”符号，顺便还把 a.out 的输出重定向到 null 了。注意：小括号附近最好加上空格！加“&amp;”的作用，就是让程序移到后台去跑。但是，不在前台跑的程序，显然是不能把东西输出到命令行的，所以要把输出重定向到别的地方。定到日志文件里，比如：</p>
-
-<pre><code class='lang-bash'>user@host $ ( ./a.out >./stdout.log 2>./stderr.log ) &
+<pre><code class="lang-bash">user@host $ ( ./a.out &gt;./stdout.log 2&gt;./stderr.log ) &amp;
 user@host $
 </code></pre>
-
 <p>就更好了。</p>
-
 <h2>新的命令：nohup</h2>
-
 <p>但是，这样的话，如果一关掉终端，或者，如果是用 ssh 登录到远程的机子上后关闭了 ssh，服务器也会随之退出（程序收到 SIGHUP 信号，但又没有设置忽略）。那怎么样，才能让程序在终端关闭之后，不至于退出呢？一个简单的方法就是使用 nohup 命令。比如：</p>
-
-<pre><code class='lang-bash'>user@host $ ( nohup ./a.out >./stdout.log 2>./stderr.log ) &
+<pre><code class="lang-bash">user@host $ ( nohup ./a.out &gt;./stdout.log 2&gt;./stderr.log ) &amp;
 user@host $
 </code></pre>
-
 <p>这样，终端关闭之后，程序便可以依旧运行了。</p>
-
 <h2>如果需要 root 权限……</h2>
-
 <p>但是，仍有问题。想象一下，这个服务器：a.out，是一个 HTTP 服务器，它要监听机器的 80 号端口。这样的话，想要运行程序，就必须要 root 权限。怎么办呢？</p>
-
 <p>如果是这样——</p>
-
-<pre><code class='lang-bash'>user@host $ ( nohup sudo ./a.out >./stdout.log 2>./stderr.log ) &
+<pre><code class="lang-bash">user@host $ ( nohup sudo ./a.out &gt;./stdout.log 2&gt;./stderr.log ) &amp;
 user@host $
 </code></pre>
-
 <p>的话，你会发现，服务器并没有跑起来。原因很简单：sudo 一直在等你输密码，但是它在后台等待，而你却在前台，无法输入。</p>
-
 <p>解决方法：使用 sudo 的 -b 参数：</p>
-
-<pre><code class='lang-bash'>user@host $ sudo -b ./a.out 1>./std.log 2>./err.log
+<pre><code class="lang-bash">user@host $ sudo -b ./a.out 1&gt;./std.log 2&gt;./err.log
 user@host $ Type the password:
 user@host $
 </code></pre>
-
 <p>“-b”参数能使 a.out 自动在后台运行，十分省事情。注意：这里不需要小括号。</p>
-
 <h2>参考</h2>
-
-<p><a href='https://zhuanlan.zhihu.com/p/21839884'>《Go语言小贴士4——后台运行》</a></p>
-
-<pre><code class='lang-bash'>user@host $ man nohup
+<p><a href="https://zhuanlan.zhihu.com/p/21839884">《Go语言小贴士4——后台运行》</a></p>
+<pre><code class="lang-bash">user@host $ man nohup
 user@host $ man sudo
 </code></pre>
-
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-
-
-<table class='prev-next'><tr>
-<td><a href='/blogs/20170915.html'>&larr; 毛毛虫</a></td>
-<td><a href='/blogs/20180702.html'>LeetCode (4) Find Median in Two Sorted Arrays &rarr;</a></td>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<table class="prev-next"><tr>
+<td><a href="/blogs/20170915.html">← 毛毛虫</a></td>
+<td><a href="/blogs/20180702.html">LeetCode (4) Find Median in Two Sorted Arrays →</a></td>
 </tr></table>
-
-
 </article>
 <footer>
 <ul>
-<li><a href='/'>Index</a></li>
-<li><a href='/blogs/index.html'>Blogs</a></li>
+<li><a href="/">Index</a></li>
+<li><a href="/blogs/index.html">Blogs</a></li>
 <li><a href="/hello.html">Hello</a></li>
 </ul>
-<p><button id='tog_night_mode'>Toggle Night Mode</button></p>
+<p><button id="tog_night_mode">Toggle Night Mode</button></p>
 </footer>
-
-<script src='/js/prism.js'></script>
-
+<script src="/js/prism.js"></script>
 <script>
 	var h1s = document.getElementsByTagName("H1");
 	if (h1s.length >= 0) {
@@ -139,6 +101,4 @@ user@host $ man sudo
 		document.body.classList.toggle("nightmode")
 	})
 </script>
-
 </body></html>
- 
