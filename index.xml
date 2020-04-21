@@ -6,8 +6,15 @@
 <description>Recent content on I'LL BE HERE</description>
 <generator>Hugo -- gohugo.io</generator>
 <copyright>Copyright &amp;copy; 2020 - fr440305 | Theme: Kiera</copyright>
-<lastBuildDate>Sat, 07 Mar 2020 21:50:44 -0800</lastBuildDate>
+<lastBuildDate>Tue, 21 Apr 2020 16:37:47 -0700</lastBuildDate>
 <atom:link href="https://blog.wshtan.net/index.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>Hello</title>
+<link>https://blog.wshtan.net/hello/</link>
+<pubDate>Tue, 21 Apr 2020 16:37:47 -0700</pubDate>
+<guid>https://blog.wshtan.net/hello/</guid>
+<description>&lt;p&gt;欢迎光临！我是做玩具的。&lt;/p&gt;</description>
+</item>
 <item>
 <title>Hugo Encryptor: Inserting Secrets in Hugo Websites</title>
 <link>https://blog.wshtan.net/posts/a-secret/</link>
