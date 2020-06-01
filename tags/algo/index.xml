@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algo on I&#39;LL BE HERE</title>
+    <link>https://blog.wshtan.net/tags/algo/</link>
+    <description>Recent content in algo on I&#39;LL BE HERE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2020 - fr440305 | Theme: Kiera</copyright>
+    <lastBuildDate>Tue, 27 Aug 2019 17:42:14 -0700</lastBuildDate>
+    
+	<atom:link href="https://blog.wshtan.net/tags/algo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes on Big-O, Big-Omega, and Big-Theta</title>
+      <link>https://blog.wshtan.net/posts/big-o-big-omega-big-theta/</link>
+      <pubDate>Tue, 27 Aug 2019 17:42:14 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/big-o-big-omega-big-theta/</guid>
+      <description>&lt;p&gt;大 O、大 Omega、大 Theta 记号的笔记（重写）。包括定义、定理与一些例题。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>I'LL BE HERE</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="The HTML5 Herald" name="description"/>
+<meta content="fr440305" name="author"/>
+<meta content="Hugo 0.56.0-DEV" name="generator"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" rel="stylesheet"/>
+<link href="https://blog.wshtan.net/css/styles.css" rel="stylesheet" type="text/css"/>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120042471-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+</head>
+<body>
+<div id="container">
+<header>
+<h1>
+<a href="https://blog.wshtan.net/">I’LL BE HERE</a>
+</h1>
+<ul id="social-media">
+</ul>
+</header>
+<nav>
+<ul>
+<li>
+<a class="" href="https://blog.wshtan.net/posts/index.html">
+<i class="fa-li fa fa-lg"></i><span>Archives</span>
+</a>
+</li>
+<li>
+<a class="" href="https://blog.wshtan.net/hello/">
+<i class="fa-li fa fa-lg"></i><span>Hello</span>
+</a>
+</li>
+<li>
+<a class="" href="https://blog.wshtan.net/tags/index.html">
+<i class="fa-li fa fa-lg"></i><span>Tags</span>
+</a>
+</li>
+</ul>
+</nav>
+<main>
+<article>
+<h1>Notes on Big-O, Big-Omega, and Big-Theta</h1>
+<aside>
+<ul>
+<li>
+<time class="post-date" datetime="2019-08-27T17:42:14-07:00">Aug 27, 2019</time>
+</li>
+<li>
+<em>
+<a href="https://blog.wshtan.net/tags/algo/">#algo</a>
+</em>
+</li>
+<li>3 min read</li>
+</ul>
+</aside>
+<p>大 O、大 Omega、大 Theta 记号的笔记（重写）。包括定义、定理与一些例题。</p>
+<p>目录如下：</p>
+<ul>
+<li>0. 函数的“家族”</li>
+<li>1. 大 O 记号
+
+<ul>
+<li>1.1. 定义与例子</li>
+<li>1.2. 大 O 记号的性质
+
+<ul>
+<li>加法（Rule of Sums）</li>
+<li>乘法（Rule of Products）</li>
+<li>传递性（Transitivity）</li>
+</ul></li>
+</ul></li>
+<li>2. 大 Omega 记号
+
+<ul>
+<li>2.1. 定义与例子</li>
+<li>2.2. 性质
+
+<ul>
+<li>与大 O 记号的关系</li>
+</ul></li>
+</ul></li>
+<li>3. 大 Theta 记号
+
+<ul>
+<li>3.1. 定义与例子</li>
+<li>3.2. 性质
+
+<ul>
+<li>与大 O、大 Omega 记号的关系</li>
+</ul></li>
+</ul></li>
+<li>4. 渐进记号与极限的关系
+
+<ul>
+<li>4.1. 更多渐进记号</li>
+<li>4.2. O、Omega、Theta 与极限的关系（极限判定法）</li>
+</ul></li>
+<li>5. 总结</li>
+<li>6. 练习与答案
+
+<ul>
+<li>写出渐进界</li>
+<li>证明性质</li>
+<li>函数排序</li>
+</ul></li>
+</ul>
+<h2 id="0-函数的-家族">0. 函数的“家族”</h2>
+<p>TODO-INTRO</p>
+<blockquote>
+<p><strong>定义 0（函数的“家族”）：</strong>函数 \( f: \mathbb{R}^{+} \rightarrow \mathbb{R}^{+} \) 的家族，在本文中指的是一个集合：
+\( \{ g | g = c \cdot f, c &gt; 0\} \)，其中 \( c \) 为任意正实数常数。</p>
+</blockquote>
+<p><strong>例子 0.1（ \( f(x) = x, x &gt; 0\) 的家族）：</strong>就是集合：\( \{ g | g = c \cdot x, c &gt; 0\}\)。
+\( f_1(x) = x \)，\( f_2(x) = 0.01x \)，\( f_3(x) = 1000x\) 都是这个家族里的成员。
+画在 X-Y 坐标系里面的话，这个家族可以表示为所有位于第一象限，过原点且斜率为正的射线，如图 1 所示。</p>
+<p>TODO-FIG</p>
+<p><strong>例子 0.2（\( y(x) = x^2, x &gt; 0\) 的家族）：</strong>就是集合：\( \{ y | y = c \cdot x^2, c &gt; 0\}\)。
+\( y_1(x) = x^2 \)，\( y_2(x) = 0.01x^2 \)，\( y_3(x) = 1000x^2\) 都是这个家族里的成员。
+画在 X-Y 坐标系里面的话，这个家族可以表示为所有过原点且开口向上的抛物线的第一象限部分。
+可以看到，当 \( x \) 足够大时，这个家族里的所有成员都会比函数 \( f_1(x) = x\) 大（飞的高），如图 2 所示。
+就算是像 \(y_2(x) = 0.01x^2\) 这样的“萌新”（就是 \( c \) 比较小的意思），当 \(x &gt; 100\) 时，就会比 \(f_1(x) = x\) 大了。</p>
+<p>TODO-FIG</p>
+<h2 id="1-大-o-记号">1. 大 O 记号</h2>
+<p>TODO-INTRO</p>
+<h3 id="1-1-定义与例子">1.1. 定义与例子</h3>
+<blockquote>
+<p><strong>定义 1 （大 O 记号）：</strong>对函数 \( f: \mathbb{R}^{+} \rightarrow \mathbb{R}^{+} \)，
+若存在 \(c &gt; 0\)，\(N &gt; 0\)，使得对任意的 \(n &gt; N\) 都有 \(f(x) &lt; c \cdot g(x)\)，
+则称 \(f(x)\textrm{ is }\textrm{O}(g(x))\)，或直接 \(f\textrm{ is }\textrm{O}(g)\)；反之则称 \(f\textrm{ is not }\textrm{O}(g)\)。</p>
+</blockquote>
+<p><strong>笔记 1（用上文“家族”的概念来解释）：</strong>如果函数 \( g \) 的家族里，有成员最终能比 \( f \) 大，则称  \(f\textrm{ is }\textrm{O}(g)\)。
+一句话就是“\( f \) 飞不过 \( g \) 家的大佬。”
+反之，如果当自变量 \(x\) 很大时，\(f(x)\) 能把 \(g\) 家族里所有成员都甩开的话，则 \(f\textrm{ is not }\textrm{O}(g)\)。</p>
+<p>定义 1 与笔记 1 实际上是等价的。区别就在于，用“家族”来解释的话，就易懂多了（我反正是这么觉得的）。接下来让我们看一些例子。</p>
+<p><strong>例子 1.1：</strong>按定义证明 \( T(n) = 2n + 1 \textrm{ is }\textrm{O}(n)\)。</p>
+<p><strong>证明：</strong>取 \(c = 3\)，\(N = 1\)，则对任意的 \(n &gt; 1\)，
+都有 \(T(n) = 2n + 1 &lt; 3n \)。证毕。</p>
+<p><strong>笔记 2（按定义证明 \(f\textrm{ is }\textrm{O}(g)\) 的格式）：</strong>
+按定义证明 \(f\textrm{ is }\textrm{O}(g)\)，本质上就是证明 \(c\) 和
+\(N\) 存在。证明一个数存在的最简单粗暴的方法就是直接把这个数字找出来。
+格式就是：取 \(c = …\)，\(N = …\)，则对于任意的……都有……，
+证毕。当然，\(c\) 和 \(N\) 的取法不是唯一的。比如，在例子 1.1 中，
+取 \(c = 3\)，\(N = 1000\)，则对任意的 \(n &gt; 1000\)，
+都有 \(T(n) &lt; 3n \)，这样也可以。但是我们通常会取最“简单”的值，
+让 \(c\) 和 \(N\) 尽可能小，且为整数；这样的话，我们的证明就更容易被别人验证了。</p>
+<p><strong>笔记 3（用“家族”的概念来解释这个例子）：</strong>
+\(T(n) = 2n+1\) 飞不过 \(n\) 家族的“大佬”，
+比如 \(3n\)，\(4n\) 之类的。</p>
+<p><strong>例子 1.2：</strong>按定义证明 \(T(n) = 2n + 1\textrm{ is }\textrm{O}(n^2)\)。</p>
+<p><strong>证明：</strong>取 \(c = 1\)，\(N = 3\)，
+则对任意的 \(n &gt; 3\) 都有 \(T(n) = 2n+1 &lt; n^2\)。证毕。</p>
+<p><strong>笔记（用“家族”的概念来解释这个例子）：</strong>
+\(T(n) = 2n+1\) 飞不过 \(n^2\) 家族的“大佬”，
+比如 \(n^2\)，\(2n^2\) 之类的。</p>
+<p><strong>笔记：</strong>从上两个例子中，我们可以看到，\(f\textrm{ is }\textrm{O}(g)\) 中，
+\(g\) 的答案不是唯一的。\(T(n) = 2n+1\) 既是 \(\textrm{O}(n)\) 也是
+\(\textrm{O}(n^2)\)。但是比起 \(\textrm{O}(n^2)\) 我们更喜欢 \(\textrm{O}(n)\)，因为  \(\textrm{O}(n)\) 是个更紧的上界，更能准确描述 \(T(n)\) 的渐进行为。<!--这句话是什么意思呢？我们之后再讲。--></p>
+<p><strong>例子 1.3：</strong>按定义证明 \(n^2\textrm{ is not O}(n)\)。</p>
+<p>证明之前我们可以先画个图：</p>
+<p>TODO-FIG</p>
+<p>可以看到，\(n^2\)很强，飞的很高，能把 \(n\) 家族里的所有成员都甩开。也就是说“\(n^2\) 飞得过 \(n\) 家族的大佬。”
+所以根据笔记 1，我们可以猜到，\(n^2\textrm{ is not O}(n)\)。但是这只是解释而不是证明。接下来就让我们来严格地证明吧。</p>
+<p><strong>证明：</strong>用反证法（Proof by Contradition）。
+假设存在 \(c &gt; 0\)，\(N &gt; 0\) 使得对任意 \(n &gt; N\) 都有 \(n^2 \le cn\)，即 \(n \le c\)。
+那么 \(n\) 就是有上界的，也就是说 \(n\) 不是任意大的。冲突出现，假设不成立，故得证。</p>
+<h3 id="1-2-大-o-记号的性质">1.2. 大 O 记号的性质</h3>
+<p>TODO-INTRO 用定义证明 \(f(x)\textrm{ is }\textrm{O}(g(x))\) 或者 \(f\textrm{ is not }\textrm{O}(g)\) 固然可以，但是太麻烦了。
+给定一个函数 \(f\)，用定义法去找 \(g\) 的话，不够直观。比如说，令 \(f(n) = (n + \log{n})(n + 8)\)，问……</p>
+<p>引理 1.4：传递性。若 f is O(g)，g is O(h)，则 f is O(h)。</p>
+<p>证明待补完。</p>
+<p>引理 1.5：f is O(c f)，其中 c &gt; 0，为常数。</p>
+<p>证明。取 k = 1/c，N = 随便一个正数，则对任意的 n 都有 f(n) &gt;= f(n)。证毕。</p>
+<p>推论 1.6：c f is O(f)。</p>
+<p>定理 1.7：如果 g is O(f)，那么对任意大于零的常数 c，都有 g is O(c f)。</p>
+<p>由以上两个引理可证。</p>
+<p>引理 1.8：f(n) + g(n) is O(max{f(n), g(n)})。</p>
+<p>证明待补完。</p>
+<p>例子 1.9：(n + log n)(n + 8) is O(n^2)。</p>
+<p><strong>练习：</strong>证明：</p>
+<p>\begin{equation}
+    f\textrm{ is O}(g), g\textrm{ is O}(h) \Rightarrow f\textrm{ is O}(h).
+\end{equation}</p>
+<h2 id="2-大-omega-记号">2. 大 Omega 记号</h2>
+<p>定义 2：Big-Omega 记号。如果存在 c &gt; 0, N &gt; 0， 使得对于任意的 n &gt; N 都有 f(n) &gt;= c g(n)，则称 f(n) is Ω(g(n))，或直接 f is Ω(g)。</p>
+<p>笔记：按“家族”概念理解。f 飞得过 g 家萌新。</p>
+<p>例子、定理待补完。</p>
+<h2 id="3-大-theta-记号">3. 大 Theta 记号</h2>
+<p>定义 3：Big-Theta 记号。如果 f is O(g) 且 f is Omega(g)，则称 f is Theta(g)。</p>
+<p>笔记：按“家族”概念理解。f 飞不过 g 家大佬，但 f 还是可以欺负一下 g 家萌新的。</p>
+<p>例子定理待补完。</p>
+<h2 id="4-总结">4. 总结</h2>
+<ul>
+<li>大 O、大 Omega、大 Theta 记号都是<strong>渐进记号</strong>。</li>
+</ul>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+        equationNumbers: {
+            autoNumber: "AMS"
+        }
+    }
+});
+</script>
+</article>
+<section class="post-nav">
+<ul>
+<li>
+<a href="https://blog.wshtan.net/posts/weird-dream/"><i class="fa fa-chevron-circle-left"></i> Weird Dream</a>
+</li>
+<li>
+<a href="https://blog.wshtan.net/posts/sum-of-frac-of-factorial/">Sum of One over Factorials <i class="fa fa-chevron-circle-right"></i> </a>
+</li>
+</ul>
+</section>
+<script data-isso="https://isso-blog-comments.wshtan.net/" src="https://isso-blog-comments.wshtan.net/js/embed.min.js"></script>
+<section id="isso-thread"></section>
+</main>
+<footer>
+<h6>Copyright © 2020 - fr440305 | Theme: Kiera | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.wshtan.net/index.xml">Subscribe</a></h6>
+</footer>
+</div>
+<script src="https://blog.wshtan.net/js/scripts.js"></script>
+</body>
+</html>
