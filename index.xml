@@ -1,88 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-<title>I'LL BE HERE</title>
-<link>https://blog.wshtan.net/</link>
-<description>Recent content on I'LL BE HERE</description>
-<generator>Hugo -- gohugo.io</generator>
-<copyright>Copyright &amp;copy; 2020 - fr440305 | Theme: Kiera</copyright>
-<lastBuildDate>Tue, 21 Apr 2020 16:37:47 -0700</lastBuildDate>
-<atom:link href="https://blog.wshtan.net/index.xml" rel="self" type="application/rss+xml"/>
-<item>
-<title>Hello</title>
-<link>https://blog.wshtan.net/hello/</link>
-<pubDate>Tue, 21 Apr 2020 16:37:47 -0700</pubDate>
-<guid>https://blog.wshtan.net/hello/</guid>
-<description>&lt;p&gt;欢迎光临！这里是做玩具的。&lt;/p&gt;</description>
-</item>
-<item>
-<title>Hugo Encryptor: Inserting Secrets in Hugo Websites</title>
-<link>https://blog.wshtan.net/posts/a-secret/</link>
-<pubDate>Sat, 07 Mar 2020 21:50:44 -0800</pubDate>
-<guid>https://blog.wshtan.net/posts/a-secret/</guid>
-<description>&lt;p&gt;最近发现了一个&lt;a href="https://github.com/Li4n0/hugo_encryptor"&gt;可以给 Hugo 博客站点加密的小工具&lt;/a&gt;。试一试。&lt;/p&gt;
-
-&lt;p&gt;密码是：&lt;code&gt;password&lt;/code&gt;。&lt;/p&gt;</description>
-</item>
-<item>
-<title>The Goal in 2020</title>
-<link>https://blog.wshtan.net/posts/goals-in-2020/</link>
-<pubDate>Wed, 19 Feb 2020 00:02:00 -0800</pubDate>
-<guid>https://blog.wshtan.net/posts/goals-in-2020/</guid>
-<description>&lt;p&gt;今年，希望自己能……&lt;/p&gt;</description>
-</item>
-<item>
-<title>An Issue I Met When Using Gorilla Sessions Go Package</title>
-<link>https://blog.wshtan.net/posts/issue-gorilla-sessions-go-pkg/</link>
-<pubDate>Sun, 29 Dec 2019 22:34:40 -0800</pubDate>
-<guid>https://blog.wshtan.net/posts/issue-gorilla-sessions-go-pkg/</guid>
-<description>&lt;p&gt;在使用 &lt;a href="https://www.gorillatoolkit.org/"&gt;Gorilla Web Tookit&lt;/a&gt; 中的 &lt;a href="https://www.gorillatoolkit.org/pkg/sessions"&gt;Sessions&lt;/a&gt; 库来写 Handler 时，我遇到了一些问题。&lt;/p&gt;</description>
-</item>
-<item>
-<title>Nonsense for December 2019</title>
-<link>https://blog.wshtan.net/posts/nonsense-dec-2019/</link>
-<pubDate>Sun, 08 Dec 2019 13:56:18 -0800</pubDate>
-<guid>https://blog.wshtan.net/posts/nonsense-dec-2019/</guid>
-<description>&lt;p&gt;十二月到了。北半球的冬天到了。一个多月没有更新。得水一篇才行。&lt;/p&gt;</description>
-</item>
-<item>
-<title>Notes on The First Three Chapters from Asking the Right Questions</title>
-<link>https://blog.wshtan.net/posts/notes-on-atrq-ch123/</link>
-<pubDate>Thu, 31 Oct 2019 17:47:47 -0700</pubDate>
-<guid>https://blog.wshtan.net/posts/notes-on-atrq-ch123/</guid>
-<description>&lt;p&gt;《学会提问》前三章的读书笔记。&lt;/p&gt;</description>
-</item>
-<item>
-<title>Sum of One over Factorials</title>
-<link>https://blog.wshtan.net/posts/sum-of-frac-of-factorial/</link>
-<pubDate>Sat, 28 Sep 2019 16:56:49 -0700</pubDate>
-<guid>https://blog.wshtan.net/posts/sum-of-frac-of-factorial/</guid>
-<description>&lt;p&gt;最近发现了两个挺有趣的式子：&lt;/p&gt;
+  <channel>
+    <title>I&#39;LL BE HERE</title>
+    <link>https://blog.wshtan.net/</link>
+    <description>Recent content on I&#39;LL BE HERE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2020 - fr440305 | Theme: Kiera</copyright>
+    <lastBuildDate>Mon, 29 Jun 2020 22:10:24 -0700</lastBuildDate>
+    
+	<atom:link href="https://blog.wshtan.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>六月份的流水帐</title>
+      <link>https://blog.wshtan.net/posts/nonsense-jun-2020/</link>
+      <pubDate>Mon, 29 Jun 2020 22:10:24 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/nonsense-jun-2020/</guid>
+      <description>今年的年度目标已经完成一半了。希望自己能完成后半部分。以上。</description>
+    </item>
+    
+    <item>
+      <title>Hello</title>
+      <link>https://blog.wshtan.net/hello/</link>
+      <pubDate>Tue, 21 Apr 2020 16:37:47 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/hello/</guid>
+      <description>&lt;p&gt;欢迎光临！这里是做玩具的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The Goal in 2020</title>
+      <link>https://blog.wshtan.net/posts/goals-in-2020/</link>
+      <pubDate>Wed, 19 Feb 2020 00:02:00 -0800</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/goals-in-2020/</guid>
+      <description>&lt;p&gt;今年，希望自己能……&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>An Issue I Met When Using Gorilla Sessions Go Package</title>
+      <link>https://blog.wshtan.net/posts/issue-gorilla-sessions-go-pkg/</link>
+      <pubDate>Sun, 29 Dec 2019 22:34:40 -0800</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/issue-gorilla-sessions-go-pkg/</guid>
+      <description>&lt;p&gt;在使用 &lt;a href=&#34;https://www.gorillatoolkit.org/&#34;&gt;Gorilla Web Tookit&lt;/a&gt; 中的 &lt;a href=&#34;https://www.gorillatoolkit.org/pkg/sessions&#34;&gt;Sessions&lt;/a&gt; 库来写 Handler 时，我遇到了一些问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Nonsense for December 2019</title>
+      <link>https://blog.wshtan.net/posts/nonsense-dec-2019/</link>
+      <pubDate>Sun, 08 Dec 2019 13:56:18 -0800</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/nonsense-dec-2019/</guid>
+      <description>&lt;p&gt;十二月到了。北半球的冬天到了。一个多月没有更新。得水一篇才行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Notes on The First Three Chapters from Asking the Right Questions</title>
+      <link>https://blog.wshtan.net/posts/notes-on-atrq-ch123/</link>
+      <pubDate>Thu, 31 Oct 2019 17:47:47 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/notes-on-atrq-ch123/</guid>
+      <description>&lt;p&gt;《学会提问》前三章的读书笔记。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sum of One over Factorials</title>
+      <link>https://blog.wshtan.net/posts/sum-of-frac-of-factorial/</link>
+      <pubDate>Sat, 28 Sep 2019 16:56:49 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/sum-of-frac-of-factorial/</guid>
+      <description>&lt;p&gt;最近发现了两个挺有趣的式子：&lt;/p&gt;
 
 &lt;p&gt;1/(1!) + 1/(3!) + 1/(5!) + 1/(7!) + &amp;hellip; = e/2 - 1/(2e)&lt;/p&gt;
 
 &lt;p&gt;1/(0!) + 1/(2!) + 1/(4!) + 1/(6!) + &amp;hellip; = e/2 + 1/(2e)&lt;/p&gt;</description>
-</item>
-<item>
-<title>Weird Dream</title>
-<link>https://blog.wshtan.net/posts/weird-dream/</link>
-<pubDate>Sun, 25 Aug 2019 23:24:50 -0700</pubDate>
-<guid>https://blog.wshtan.net/posts/weird-dream/</guid>
-<description>&lt;p&gt;一天，我去超市买矿泉水，忽然，下起了大雨。于是我想到，反正这雨这么大，所以假如我现在把矿泉水喝完，再拿空瓶子去盛雨的话，那我岂不是就白赚了这两瓶矿泉水的钱吗？我真机智！&lt;/p&gt;</description>
-</item>
-<item>
-<title>Comment Ok</title>
-<link>https://blog.wshtan.net/posts/comment-ok/</link>
-<pubDate>Sun, 18 Aug 2019 16:17:25 -0700</pubDate>
-<guid>https://blog.wshtan.net/posts/comment-ok/</guid>
-<description>&lt;p&gt;评论系统已经装好了，所以现在可以评论了（大概）。附带上让 Isso 在&lt;strong&gt;本机&lt;/strong&gt;运行的简单的操作步骤（需要预装 Docker）。&lt;/p&gt;</description>
-</item>
-<item>
-<title>New Start</title>
-<link>https://blog.wshtan.net/posts/new-start/</link>
-<pubDate>Tue, 13 Aug 2019 15:23:04 -0700</pubDate>
-<guid>https://blog.wshtan.net/posts/new-start/</guid>
-<description>&lt;p&gt;新的开始。&lt;/p&gt;</description>
-</item>
-</channel>
+    </item>
+    
+    <item>
+      <title>Weird Dream</title>
+      <link>https://blog.wshtan.net/posts/weird-dream/</link>
+      <pubDate>Sun, 25 Aug 2019 23:24:50 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/weird-dream/</guid>
+      <description>&lt;p&gt;一天，我去超市买矿泉水，忽然，下起了大雨。于是我想到，反正这雨这么大，所以假如我现在把矿泉水喝完，再拿空瓶子去盛雨的话，那我岂不是就白赚了这两瓶矿泉水的钱吗？我真机智！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Comment Ok</title>
+      <link>https://blog.wshtan.net/posts/comment-ok/</link>
+      <pubDate>Sun, 18 Aug 2019 16:17:25 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/comment-ok/</guid>
+      <description>&lt;p&gt;评论系统已经装好了，所以现在可以评论了（大概）。附带上让 Isso 在&lt;strong&gt;本机&lt;/strong&gt;运行的简单的操作步骤（需要预装 Docker）。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New Start</title>
+      <link>https://blog.wshtan.net/posts/new-start/</link>
+      <pubDate>Tue, 13 Aug 2019 15:23:04 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/new-start/</guid>
+      <description>&lt;p&gt;新的开始。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
 </rss>

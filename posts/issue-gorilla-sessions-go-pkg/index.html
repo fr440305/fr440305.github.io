@@ -1,16 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
+
 <head>
-<title>I'LL BE HERE</title>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="The HTML5 Herald" name="description"/>
-<meta content="fr440305" name="author"/>
-<meta content="Hugo 0.56.0-DEV" name="generator"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" rel="stylesheet"/>
-<link href="https://blog.wshtan.net/css/styles.css" rel="stylesheet" type="text/css"/>
+  <title>I&#39;LL BE HERE</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="fr440305" />
+  <meta name="generator" content="Hugo 0.56.0-DEV" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://blog.wshtan.net/css/styles.css" />
+
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -20,69 +23,102 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
+
 <body>
-<div id="container">
-<header>
-<h1>
-<a href="https://blog.wshtan.net/">I’LL BE HERE</a>
-</h1>
-<ul id="social-media">
-</ul>
-</header>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://blog.wshtan.net/">I&rsquo;LL BE HERE</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
 <nav>
-<ul>
-<li>
-<a class="" href="https://blog.wshtan.net/posts/index.html">
-<i class="fa-li fa fa-lg"></i><span>Archives</span>
-</a>
-</li>
-<li>
-<a class="" href="https://blog.wshtan.net/hello/">
-<i class="fa-li fa fa-lg"></i><span>Hello</span>
-</a>
-</li>
-<li>
-<a class="" href="https://blog.wshtan.net/tags/index.html">
-<i class="fa-li fa fa-lg"></i><span>Tags</span>
-</a>
-</li>
-</ul>
+    <ul>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/posts/index.html">
+                <i class="fa-li fa  fa-lg"></i><span>Archives</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/hello/">
+                <i class="fa-li fa  fa-lg"></i><span>Hello</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/tags/index.html">
+                <i class="fa-li fa  fa-lg"></i><span>Tags</span>
+            </a>
+        </li>
+        
+    </ul>
 </nav>
-<main>
+
+    <main>
+
+
+
+
 <article>
-<h1>An Issue I Met When Using Gorilla Sessions Go Package</h1>
-<aside>
-<ul>
-<li>
-<time class="post-date" datetime="2019-12-29T22:34:40-08:00">Dec 29, 2019</time>
-</li>
-<li>
-<em>
-<a href="https://blog.wshtan.net/tags/golang/">#golang</a>
+
+    <h1>An Issue I Met When Using Gorilla Sessions Go Package</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-12-29T22:34:40-08:00">Dec 29, 2019</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://blog.wshtan.net/tags/golang/">#golang</a>
                 
                     , 
                     <a href="https://blog.wshtan.net/tags/web-dev/">#web-dev</a>
-</em>
-</li>
-<li>2 min read</li>
-</ul>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
 </aside>
-<p>在使用 <a href="https://www.gorillatoolkit.org/">Gorilla Web Tookit</a> 中的 <a href="https://www.gorillatoolkit.org/pkg/sessions">Sessions</a> 库来写 Handler 时，我遇到了一些问题。</p>
+    
+
+    <p>在使用 <a href="https://www.gorillatoolkit.org/">Gorilla Web Tookit</a> 中的 <a href="https://www.gorillatoolkit.org/pkg/sessions">Sessions</a> 库来写 Handler 时，我遇到了一些问题。</p>
+
 <h2 id="有问题的程序">有问题的程序</h2>
+
 <p>我想写一个小服务器，监听 <code>127.0.0.1：8080</code> 端口。当用户打开 <code>http://127.0.0.1：8080</code> 时，浏览器显示 <code>Refresh Counter：1</code>，当用户刷新网页时，浏览器显示 <code>Refresh Counter：2</code>。用户不断刷新浏览器，<code>Refresh Counter</code> 就会递增。</p>
+
 <p>我的想法是，使用 Gorilla Sessions 库来实现。我的代码如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> (
-	<span style="color:#e6db74">"fmt"</span>
-	<span style="color:#e6db74">"log"</span>
-	<span style="color:#e6db74">"net/http"</span>
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;log&#34;</span>
+	<span style="color:#e6db74">&#34;net/http&#34;</span>
 
-	<span style="color:#e6db74">"github.com/gorilla/securecookie"</span>
-	<span style="color:#a6e22e">sn</span> <span style="color:#e6db74">"github.com/gorilla/sessions"</span>
-	<span style="color:#a6e22e">hr</span> <span style="color:#e6db74">"github.com/julienschmidt/httprouter"</span>
+	<span style="color:#e6db74">&#34;github.com/gorilla/securecookie&#34;</span>
+	<span style="color:#a6e22e">sn</span> <span style="color:#e6db74">&#34;github.com/gorilla/sessions&#34;</span>
+	<span style="color:#a6e22e">hr</span> <span style="color:#e6db74">&#34;github.com/julienschmidt/httprouter&#34;</span>
 )
 
 <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">store</span> = <span style="color:#a6e22e">sn</span>.<span style="color:#a6e22e">NewCookieStore</span>(
@@ -91,7 +127,7 @@ if (!doNotTrack) {
 )
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">serveIndex</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>, <span style="color:#a6e22e">_</span> <span style="color:#a6e22e">hr</span>.<span style="color:#a6e22e">Params</span>) {
-	<span style="color:#a6e22e">session</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#a6e22e">r</span>, <span style="color:#e6db74">"refresh-counter"</span>)
+	<span style="color:#a6e22e">session</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#a6e22e">r</span>, <span style="color:#e6db74">&#34;refresh-counter&#34;</span>)
 	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 		<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Error</span>(
 			<span style="color:#a6e22e">w</span>,
@@ -100,12 +136,12 @@ if (!doNotTrack) {
 		)
 		<span style="color:#66d9ef">return</span>
 	}
-	<span style="color:#a6e22e">count</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">"count"</span>].(<span style="color:#66d9ef">int</span>)
+	<span style="color:#a6e22e">count</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">&#34;count&#34;</span>].(<span style="color:#66d9ef">int</span>)
 	<span style="color:#a6e22e">count</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
 
-	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">"Refresh Counter: %d"</span>, <span style="color:#a6e22e">count</span>)
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;Refresh Counter: %d&#34;</span>, <span style="color:#a6e22e">count</span>)
 
-	<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">"count"</span>] = <span style="color:#66d9ef">interface</span>{}(<span style="color:#a6e22e">count</span>)
+	<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">&#34;count&#34;</span>] = <span style="color:#66d9ef">interface</span>{}(<span style="color:#a6e22e">count</span>)
 	<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">sn</span>.<span style="color:#a6e22e">Save</span>(<span style="color:#a6e22e">r</span>, <span style="color:#a6e22e">w</span>)
 	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 		<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>(), <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>)
@@ -116,23 +152,36 @@ if (!doNotTrack) {
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
 	<span style="color:#a6e22e">router</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">hr</span>.<span style="color:#a6e22e">New</span>()
-	<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">"/"</span>, <span style="color:#a6e22e">serveIndex</span>)
+	<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#a6e22e">serveIndex</span>)
 
-	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">":8080"</span>, <span style="color:#a6e22e">router</span>))
+	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">&#34;:8080&#34;</span>, <span style="color:#a6e22e">router</span>))
 }</code></pre></div>
 <p>但是运行以后，程序的行为并不同于我的期望。无论我如何刷新，浏览器内显示的内容总是 <code>Refresh Counter：1</code>。</p>
+
 <h2 id="session-是如何运作的">Session 是如何运作的</h2>
+
 <p>Session 是通过 Cookie 运作的。当服务器跑起来时，服务器会维护一个 Session 池，Session 池里储存着所有的 Session。</p>
+
 <p>每个 Session 都有一个 Session ID，这个 ID 会储存在用户的浏览器（更准确的说法是 User Agent）里面。</p>
+
 <p>一旦储存成功，此后，用户向服务器发出的每个请求，请求的头部都会带上诸如 <code>Cookie: refresh-counter=aV12...fde</code> 之类的字段。其中，<code>refresh-counter</code> 是 Session 的名字，<code>aV12...fde</code> 是 Session ID，它应该是一段很长的字符串。</p>
+
 <p>顺带一提，用户可以通过浏览器的开发者面板来查看 Session ID。</p>
+
 <p>只要服务器读了请求头部，就可以知道 Session ID，服务器就能根据这个 ID，从 Session 池中找出相应的 Session，得到诸如“用户刷新了多少次”之类的信息。</p>
+
 <p>以上，就是 Session 的运作方式。</p>
+
 <h2 id="简化代码-复现问题">简化代码，复现问题</h2>
+
 <p>想要解决问题，首先，要找出问题出在哪里。根据 Session 的运作方式，请求的头部会有 Cookie 字段。</p>
+
 <p>然而，我打开浏览器的开发者面板，发现，Cookie 字段并没有包含 Session ID。</p>
+
 <p>也就是说，Cookie 并没有设置成功。</p>
+
 <p>在以上程序中，设置 Cookie 的地方是 <code>err = sn.Save(r, w)</code> 这句话。文档中对 <code>Save</code> 的注释是：Save saves all sessions used during the current request。也就是说，库里面的某处，会遍历一堆 Session，然后调用每个 Session 的 Save 方法。</p>
+
 <p>单个 Session 的 Save 方法会调用到这段代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">CookieStore</span>) <span style="color:#a6e22e">Save</span>(<span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>, <span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>,
 	<span style="color:#a6e22e">session</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Session</span>) <span style="color:#66d9ef">error</span> {
@@ -145,85 +194,113 @@ if (!doNotTrack) {
 	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
 }</code></pre></div>
 <p>也就是说，Gorilla Sessions 库是通过 <code>http.SetCookie</code> 来设置 Cookie 的。</p>
+
 <p>函数 <code>http.SetCookie</code> 的代码是：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">SetCookie</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">cookie</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Cookie</span>) {
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">String</span>(); <span style="color:#a6e22e">v</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">""</span> {
-		<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">"Set-Cookie"</span>, <span style="color:#a6e22e">v</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">String</span>(); <span style="color:#a6e22e">v</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span> {
+		<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;Set-Cookie&#34;</span>, <span style="color:#a6e22e">v</span>)
 	}
 }</code></pre></div>
 <p>也就是说，这个 <code>Set-Cookie</code> Header 没有加上。难道问题出在这里？</p>
+
 <p>现在可以开始简化代码了。考虑如下代码中的 serveHello Handler：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> (
-    <span style="color:#e6db74">"fmt"</span>
-    <span style="color:#a6e22e">hr</span> <span style="color:#e6db74">"github.com/julienschmidt/httprouter"</span>
-    <span style="color:#e6db74">"log"</span>
-    <span style="color:#e6db74">"net/http"</span>
-    <span style="color:#e6db74">"time"</span>
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+    <span style="color:#a6e22e">hr</span> <span style="color:#e6db74">&#34;github.com/julienschmidt/httprouter&#34;</span>
+    <span style="color:#e6db74">&#34;log&#34;</span>
+    <span style="color:#e6db74">&#34;net/http&#34;</span>
+    <span style="color:#e6db74">&#34;time&#34;</span>
 )
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">serveHello</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>, <span style="color:#a6e22e">_</span> <span style="color:#a6e22e">hr</span>.<span style="color:#a6e22e">Params</span>) {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">"Response Body"</span>)
-    <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">"X-Sample-Response-Header"</span>, <span style="color:#e6db74">"12345"</span>)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;Response Body&#34;</span>)
+    <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;X-Sample-Response-Header&#34;</span>, <span style="color:#e6db74">&#34;12345&#34;</span>)
 }
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#a6e22e">router</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">hr</span>.<span style="color:#a6e22e">New</span>()
-    <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">"/hello"</span>, <span style="color:#a6e22e">serveHello</span>)
-    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">":9090"</span>, <span style="color:#a6e22e">router</span>))
+    <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/hello&#34;</span>, <span style="color:#a6e22e">serveHello</span>)
+    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">&#34;:9090&#34;</span>, <span style="color:#a6e22e">router</span>))
 }</code></pre></div>
 <p>问：这个 Handler 能够成功把 <code>X-Sample-Response-Header</code> 加上吗？如果不行的话，就说明这真的是问题所在。</p>
-<h2 id="解决方法以及修改后的程序">解决方法以及修改后的程序</h2>
-<p>答：不行。</p>
-<p>虽然现在还不知道为什么不行，但是解决方法已经显而易见了：先保存 Session，再写 Response Body 就行了。</p>
-<p>原先的代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">"Refresh Counter: %d"</span>, <span style="color:#a6e22e">count</span>)
 
-<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">"count"</span>] = <span style="color:#66d9ef">interface</span>{}(<span style="color:#a6e22e">count</span>)
+<h2 id="解决方法以及修改后的程序">解决方法以及修改后的程序</h2>
+
+<p>答：不行。</p>
+
+<p>虽然现在还不知道为什么不行，但是解决方法已经显而易见了：先保存 Session，再写 Response Body 就行了。</p>
+
+<p>原先的代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;Refresh Counter: %d&#34;</span>, <span style="color:#a6e22e">count</span>)
+
+<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">&#34;count&#34;</span>] = <span style="color:#66d9ef">interface</span>{}(<span style="color:#a6e22e">count</span>)
 <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">sn</span>.<span style="color:#a6e22e">Save</span>(<span style="color:#a6e22e">r</span>, <span style="color:#a6e22e">w</span>)
 <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 	<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>(), <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>)
 	<span style="color:#66d9ef">return</span>
 }</code></pre></div>
 <p>修改后的代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">"count"</span>] = <span style="color:#66d9ef">interface</span>{}(<span style="color:#a6e22e">count</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">&#34;count&#34;</span>] = <span style="color:#66d9ef">interface</span>{}(<span style="color:#a6e22e">count</span>)
 <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">sn</span>.<span style="color:#a6e22e">Save</span>(<span style="color:#a6e22e">r</span>, <span style="color:#a6e22e">w</span>)
 <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 	<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>(), <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>)
 	<span style="color:#66d9ef">return</span>
 }
 
-<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">"Refresh Counter: %d"</span>, <span style="color:#a6e22e">count</span>)</code></pre></div>
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;Refresh Counter: %d&#34;</span>, <span style="color:#a6e22e">count</span>)</code></pre></div>
 <p>运行之后，发现成功。</p>
+
 <h2 id="接口-http-responsewriter-的-write-行为">接口 http.ResponseWriter 的 Write() 行为</h2>
+
 <p>TODO: Explicit/Implicit Flush</p>
+
 <h2 id="总结-先读-request-然后写-response-header-最后写-response-body">总结：先读 Request、然后写 Response Header，最后写 Response Body</h2>
+
 <ul>
 <li>读 Request：</li>
 <li>写 Response Header：包括修改与保存 Sessions</li>
 <li>写 Response Body</li>
 </ul>
+
 </article>
+
+
 <section class="post-nav">
-<ul>
-<li>
-<a href="https://blog.wshtan.net/posts/nonsense-dec-2019/"><i class="fa fa-chevron-circle-left"></i> Nonsense for December 2019</a>
-</li>
-<li>
-<a href="https://blog.wshtan.net/posts/goals-in-2020/">The Goal in 2020 <i class="fa fa-chevron-circle-right"></i> </a>
-</li>
-</ul>
+    <ul>
+        
+        <li>
+            <a href="https://blog.wshtan.net/posts/nonsense-dec-2019/"><i class="fa fa-chevron-circle-left"></i> Nonsense for December 2019</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.wshtan.net/posts/goals-in-2020/">The Goal in 2020 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
 </section>
-<script data-isso="https://isso-blog-comments.wshtan.net/" src="https://isso-blog-comments.wshtan.net/js/embed.min.js"></script>
-<section id="isso-thread"></section>
+    
+
+    <script data-isso="https://isso-blog-comments.wshtan.net/"
+	            src="https://isso-blog-comments.wshtan.net/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+
+
+
+
+
+
 </main>
-<footer>
-<h6>Copyright © 2020 - fr440305 | Theme: Kiera | 
+    <footer>
+        <h6>Copyright &copy; 2020 - fr440305 | Theme: Kiera | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://blog.wshtan.net/index.xml">Subscribe</a></h6>
-</footer>
+    </footer>
 </div>
 <script src="https://blog.wshtan.net/js/scripts.js"></script>
 </body>
+
 </html>

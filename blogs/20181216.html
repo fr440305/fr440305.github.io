@@ -1,33 +1,43 @@
-<!DOCTYPE html>
+ 
+<!doctype html>
 <html> <head>
-<meta charset="utf-8"/>
-<meta content="initial-scale=1.0" name="viewport"/>
-<link href="/favicon.png" rel="icon" size="32x32"/>
-<link href="/favicon.png" rel="icon shortcut" type="image/ico"/>
-<link href="/favicon.png" rel="apple-touch-icon"/>
-<link href="/css/global.css" rel="stylesheet" type="text/css"/>
-<link href="/css/nightmode.css" rel="stylesheet" type="text/css"/>
-<link href="/css/prism.css" rel="stylesheet" type="text/css"/>
+<meta charset='utf-8'>
+<meta name='viewport' content='initial-scale=1.0'>
+<link rel='icon' size='32x32' href='/favicon.png'>
+<link rel='icon shortcut' type='image/ico' href='/favicon.png'>
+<link rel='apple-touch-icon' href='/favicon.png'>
+
+<link rel='stylesheet' type='text/css' href="/css/global.css">
+<link rel='stylesheet' type='text/css' href="/css/nightmode.css">
+<link rel='stylesheet' type='text/css' href="/css/prism.css">
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 	gtag('config', 'UA-120042471-1');
 </script>
+
 </head> <body>
+
 <article>
+
 <h1>一道小学奥数题</h1>
+
 <p>这真的是小学奥数题吗，我怎么觉得有点不对劲。是现在的小学生太聪明了，还是我太笨了……</p>
+
 <blockquote>
-<p>题目：求 1234567891011…20172018 除以 9 所得的余数。</p>
+<p>题目：求 1234567891011&hellip;20172018 除以 9 所得的余数。</p>
 </blockquote>
+
 <p><strong>解 1</strong>。我最开始的解法，写代码解的。一个数除以9的余数等于各位数字之和除以9的余数。</p>
-<pre><code class="language-javascript">var s0 = "";
+
+<pre><code class="language-javascript">var s0 = &quot;&quot;;
 
 for (var i = 1; i &lt;= 2018; i += 1) {
-	s0 += ("" + i);
+	s0 += (&quot;&quot; + i);
 }
 
 var s = 0;
@@ -38,38 +48,54 @@ for (var i = 0; i &lt; s0.length; i += 1) {
 
 console.log(s % 9); // output: 3
 </code></pre>
+
 <p>然后我觉得不对。小学奥数哪能写代码解题的。然后我就上网搜，就搜到了别人的解法。</p>
+
 <p><strong>解 2</strong>。网上（“参考”的第二条）的解法。</p>
+
 <p>$$\begin{eqnarray}
-1234567891011…2018\mod9 \\<br/>
-= (1+2+…+2018)\mod9 \\<br/>
-= ((1+2018)\times2018 / 2)\mod9 \\<br/>
-= 2037171\mod9 \\<br/>
-= 2+0+3+7+1+7+1\mod9 \\<br/>
+1234567891011&hellip;2018\mod9 \\<br />
+= (1+2+&hellip;+2018)\mod9 \\<br />
+= ((1+2018)\times2018 / 2)\mod9 \\<br />
+= 2037171\mod9 \\<br />
+= 2+0+3+7+1+7+1\mod9 \\<br />
 = 3
 \end{eqnarray}$$</p>
+
 <p>一开始看不懂从第一步到第二部的变法，不过最后弄懂了。</p>
+
 <p><strong>结论</strong>。果然是我太笨了……</p>
+
 <h2>参考</h2>
+
 <ol>
 <li><p><a href="https://www.chasedream.com/show.aspx?id=5821&amp;cid=40">余数的性质以及一些例题。</a></p></li>
-<li><p><a href="https://www.nowcoder.com/questionTerminal/32cf8bbdf61c4e5aa26f6dcc0722354f">1234567891011…2014 对 9 的余数。</a></p></li>
+
+<li><p><a href="https://www.nowcoder.com/questionTerminal/32cf8bbdf61c4e5aa26f6dcc0722354f">1234567891011&hellip;2014 对 9 的余数。</a></p></li>
 </ol>
-<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<table class="prev-next"><tr>
-<td><a href="/blogs/20181015.html">← 大 O、大 Omega、大 Theta 记号的笔记</a></td>
-<td><a href="/blogs/20190221.html">Goals in 2019 →</a></td>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<table class='prev-next'><tr>
+<td><a href='/blogs/20181015.html'>&larr; 大 O、大 Omega、大 Theta 记号的笔记</a></td>
+<td><a href='/blogs/20190221.html'>Goals in 2019 &rarr;</a></td>
 </tr></table>
+
+
 </article>
 <footer>
 <ul>
-<li><a href="/">Index</a></li>
-<li><a href="/blogs/index.html">Blogs</a></li>
+<li><a href='/'>Index</a></li>
+<li><a href='/blogs/index.html'>Blogs</a></li>
 <li><a href="/hello.html">Hello</a></li>
 </ul>
-<p><button id="tog_night_mode">Toggle Night Mode</button></p>
+<p><button id='tog_night_mode'>Toggle Night Mode</button></p>
 </footer>
-<script src="/js/prism.js"></script>
+
+<script src='/js/prism.js'></script>
+
 <script>
 	var h1s = document.getElementsByTagName("H1");
 	if (h1s.length >= 0) {
@@ -99,4 +125,6 @@ console.log(s % 9); // output: 3
 		document.body.classList.toggle("nightmode")
 	})
 </script>
+
 </body></html>
+ 

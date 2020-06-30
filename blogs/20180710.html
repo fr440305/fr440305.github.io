@@ -1,33 +1,44 @@
-<!DOCTYPE html>
+ 
+<!doctype html>
 <html> <head>
-<meta charset="utf-8"/>
-<meta content="initial-scale=1.0" name="viewport"/>
-<link href="/favicon.png" rel="icon" size="32x32"/>
-<link href="/favicon.png" rel="icon shortcut" type="image/ico"/>
-<link href="/favicon.png" rel="apple-touch-icon"/>
-<link href="/css/global.css" rel="stylesheet" type="text/css"/>
-<link href="/css/nightmode.css" rel="stylesheet" type="text/css"/>
-<link href="/css/prism.css" rel="stylesheet" type="text/css"/>
+<meta charset='utf-8'>
+<meta name='viewport' content='initial-scale=1.0'>
+<link rel='icon' size='32x32' href='/favicon.png'>
+<link rel='icon shortcut' type='image/ico' href='/favicon.png'>
+<link rel='apple-touch-icon' href='/favicon.png'>
+
+<link rel='stylesheet' type='text/css' href="/css/global.css">
+<link rel='stylesheet' type='text/css' href="/css/nightmode.css">
+<link rel='stylesheet' type='text/css' href="/css/prism.css">
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 	gtag('config', 'UA-120042471-1');
 </script>
+
 </head> <body>
+
 <article>
+
 <h1>MathJax 数学符号测试</h1>
+
 <p>当 \(a \ne 0\) 时，一元二次方程     \(ax^2+bx+c=0\) 有
 \begin{equation}
     x = {-b \pm \sqrt{b^2-4ac} \over 2a}
 \end{equation}
 两个根。</p>
+
 <p>沃日，<a href="https://www.mathjax.org/">MathJax</a> 好几把炫酷。</p>
+
 <h2>顺带贴出教程</h2>
+
 <p>理解本教程，需要读者先懂点 HTML。首先在网页里加两个 Script 标签：</p>
-<pre><code class="lang-html">&lt;script type='text/x-mathjax-config'&gt;
+
+<pre><code class='lang-html'>&lt;script type='text/x-mathjax-config'&gt;
 MathJax.Hub.Config({
     TeX: {
         equationNumbers: {
@@ -38,15 +49,19 @@ MathJax.Hub.Config({
 &lt;/script&gt; &lt;!-- 给单独成一行的等式加上行号 --&gt;
 &lt;script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async&gt;
 &lt;/script&gt;</code></pre>
+
 <p>顺带一提：这俩标签加在 Head 或者 Body 里面都可以。然后，在网页里加一段 P 标签：</p>
-<pre><code class="lang-html">&lt;p&gt;
+
+<pre><code class='lang-html'>&lt;p&gt;
 When \(a \ne 0\), equation \(ax^2+bx+c=0\) has two solutions, namely
 \begin{equation}
     x = {-b \pm \sqrt{b^2-4ac} \over 2a}
 \end{equation}
 &lt;/p&gt;</code></pre>
+
 <p>就好了。</p>
-<script type="text/x-mathjax-config">
+
+<script type='text/x-mathjax-config'>
 MathJax.Hub.Config({
     TeX: {
         equationNumbers: {
@@ -55,21 +70,29 @@ MathJax.Hub.Config({
     }
 });
 </script>
-<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<table class="prev-next"><tr>
-<td><a href="/blogs/20180706.html">← 在 MySQL 里，别用“utf8”！用“utf8mb4”！</a></td>
-<td><a href="/blogs/20181015.html">大 O、大 Omega、大 Theta 记号的笔记 →</a></td>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<table class='prev-next'><tr>
+<td><a href='/blogs/20180706.html'>&larr; 在 MySQL 里，别用“utf8”！用“utf8mb4”！</a></td>
+<td><a href='/blogs/20181015.html'>大 O、大 Omega、大 Theta 记号的笔记 &rarr;</a></td>
 </tr></table>
+
+
 </article>
 <footer>
 <ul>
-<li><a href="/">Index</a></li>
-<li><a href="/blogs/index.html">Blogs</a></li>
+<li><a href='/'>Index</a></li>
+<li><a href='/blogs/index.html'>Blogs</a></li>
 <li><a href="/hello.html">Hello</a></li>
 </ul>
-<p><button id="tog_night_mode">Toggle Night Mode</button></p>
+<p><button id='tog_night_mode'>Toggle Night Mode</button></p>
 </footer>
-<script src="/js/prism.js"></script>
+
+<script src='/js/prism.js'></script>
+
 <script>
 	var h1s = document.getElementsByTagName("H1");
 	if (h1s.length >= 0) {
@@ -99,4 +122,6 @@ MathJax.Hub.Config({
 		document.body.classList.toggle("nightmode")
 	})
 </script>
+
 </body></html>
+ 
