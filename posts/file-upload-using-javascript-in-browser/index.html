@@ -144,7 +144,7 @@
 
 <h2 id="1-客户端的效果">1 客户端的效果</h2>
 
-<p>&#9654; <strong>例子 1-1：</strong>简单的演示。其中，“提交”按钮不能真正提交文件，而只作演示用（因为没有服务器）。</p>
+<p>&#9654;&#xFE0E; <strong>例子 1-1：</strong>简单的演示。其中，“提交”按钮不能真正提交文件，而只作演示用（因为没有服务器）。</p>
 
 <p><fieldset> <legend> 例子 1-1 演示：一次性上传多个文件 </legend>
 <input type='file' id='input_file' style='display:none' multiple>
@@ -209,19 +209,19 @@ btn_submit.onclick = function() {
 }
 </script>
 
-<p>&#9664;</p>
+<p>&#9664;&#xFE0E;</p>
 
 <p>以下是基本知识点。</p>
 
 <h2 id="2-文件选择元素">2 文件选择元素</h2>
 
-<p>&#9654; <strong>例子 2-1（<code>&lt;input type='file'&gt;</code>）：</strong>在上面的例子 1-1 中，用户点击“添加更多文件”，就能调出文件选择窗口；这是用 <code>input</code> 实现的。
+<p>&#9654;&#xFE0E; <strong>例子 2-1（<code>&lt;input type='file'&gt;</code>）：</strong>在上面的例子 1-1 中，用户点击“添加更多文件”，就能调出文件选择窗口；这是用 <code>input</code> 实现的。
 input 是一种 HTML 元素。当 input 的 <code>type</code> 属性被设置为 <code>file</code>，即：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-1 代码：文件选择元素 --&gt;</span>
 &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;file&#39;</span>&gt;</code></pre></div>
 <p>就可以选择文件了。效果如下：</p>
 
-<p><input type='file'> &#9664;</p>
+<p><input type='file'> &#9664;&#xFE0E;</p>
 
 <p>为了后续讨论方便，定义：</p>
 
@@ -240,14 +240,14 @@ input 是一种 HTML 元素。当 input 的 <code>type</code> 属性被设置为
 <p>文件选择元素的一个重要属性是 <code>multiple</code>，它决定了之后跳出的文件选择窗口是否可以选择多个文件。
 带 multiple 的文件选择元素可以选择多个文件。下面是例子：</p>
 
-<p>&#9654; <strong>例子 2-2：</strong></p>
+<p>&#9654;&#xFE0E; <strong>例子 2-2：</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-2 代码：可以选择多个文件的文件选择元素 --&gt;</span>
 &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;file&#39;</span> <span style="color:#a6e22e">multiple</span>&gt;</code></pre></div>
 <p>效果：</p>
 
 <p><input type='file' multiple></p>
 
-<p>上面这个文件选择元素允许使用者选择多个文件，来试一试吧。 &#9664;</p>
+<p>上面这个文件选择元素允许使用者选择多个文件，来试一试吧。 &#9664;&#xFE0E;</p>
 
 <h3 id="2-2-click-方法-用-javascript-调出文件选择窗口">2.2 <code>click</code> 方法：用 JavaScript 调出文件选择窗口</h3>
 
@@ -256,7 +256,7 @@ input 是一种 HTML 元素。当 input 的 <code>type</code> 属性被设置为
 然后需要调出文件选择窗口的时候，通过 JavaScript 调用文件选择元素的 <code>click</code> 方法。
 以下是例子：</p>
 
-<p>&#9654; <strong>例子 2-3：</strong></p>
+<p>&#9654;&#xFE0E; <strong>例子 2-3：</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-3 代码：用 JavaScript 调出文件选择窗口 --&gt;</span>
 
 <span style="color:#75715e">&lt;!-- 自定义样式的按钮： --&gt;</span>
@@ -292,7 +292,7 @@ document.getElementById('elemButton').addEventListener('click', function() {
 });
 </script>
 
-<p>只要点击上面的按钮，就可以调出文件选择窗口了。 &#9664;</p>
+<p>只要点击上面的按钮，就可以调出文件选择窗口了。 &#9664;&#xFE0E;</p>
 
 <h3 id="2-3-change-事件">2.3 <code>change</code> 事件</h3>
 
@@ -300,7 +300,7 @@ document.getElementById('elemButton').addEventListener('click', function() {
 
 <p>有时候，我们希望用户选中文件以后，系统能弹出一个对话框，上面有“您已经选择了文件！”的提示。为了实现这一需求，我们可以把弹出对话框的代码写到一个匿名函数里，再把这个匿名函数通过 addEventListener 绑定为 change 事件的回调函数。</p>
 
-<p>&#9654; <strong>例子 2-4：change 事件演示</strong></p>
+<p>&#9654;&#xFE0E; <strong>例子 2-4：change 事件演示</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;file&#39;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;elemFileSelector&#39;</span>&gt;
 
 &lt;<span style="color:#f92672">script</span>&gt;
@@ -310,7 +310,7 @@ document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e
 &lt;/<span style="color:#f92672">script</span>&gt;</code></pre></div>
 <p>效果如下：</p>
 
-<p><input type='file' id='elemFileSelector1'> &#9664;
+<p><input type='file' id='elemFileSelector1'> &#9664;&#xFE0E;
 <script>
 document.getElementById(&lsquo;elemFileSelector1&rsquo;).addEventListener(&lsquo;change&rsquo;, function() {
     alert(&lsquo;您已经选择了文件！&rsquo;);
