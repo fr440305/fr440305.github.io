@@ -61,7 +61,7 @@
 
 <article>
 
-    <h1>如何在浏览器中用 JavaScript 上传文件 (1/3) 前端的代码</h1>
+    <h1>在浏览器中用 JavaScript 上传文件 (1/3) 前端的代码</h1>
 
     
         <aside>
@@ -73,70 +73,82 @@
         
 
         
+        <li>
+            <em>
+                
+                    
+                    <a href="https://blog.wshtan.net/tags/web-dev/">#web-dev</a>
+                
+            </em>
+        </li>
+        
 
-        <li>2 min read</li>
+        <li>3 min read</li>
     </ul>
 </aside>
 
     
 
-    <p>如何在浏览器中用 JavaScript 上传文件？那些文件选择元素是怎么调用的？上传的代码怎么写？
-上传的时候，浏览器发送的 POST 请求是什么样的？服务器端该如何接收这样的请求？
-相信不少同学都很想了解这些问题的答案。下面就让小编来为大家介绍一下 JavaScript 上传文件的具体内容。</p>
+    <p>TODO: Pub@07-31</p>
 
-<h2 id="关键词">关键词</h2>
+<p>没有技术含量的水文。</p>
 
 <ul>
-<li>文件选择元素（<code>&lt;input type='file'&gt;</code>）
+<li><strong>Part 1/3：前端的代码【这一篇】</strong></li>
+<li>Part 2/3：multipart/form-data 的请求体</li>
+<li>Part 3/3：后端的代码（Golang 版）</li>
+</ul>
+
+<!--
+## 关键词
+
+- 文件选择元素（`<input type='file'>`）
+    - [MDN 文档](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file)
+- `window.File`
+    - [MDN 文档](https://developer.mozilla.org/en-US/docs/Web/API/File)
+- AJAX
+    - [百度百科](https://baike.baidu.com/item/AJAX/8425)
+    - [Wikipedia](https://en.wikipedia.org/wiki/Ajax_(programming))
+    - [MDN 开发指南](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX)
+- `window.XMLHttpRequest`
+    - `...`
+- `window.FormData`
+    - `...`
+- `multipart/form-data`
+    - [StackOverflow 上的一个提问](https://stackoverflow.com/questions/8659808/how-does-http-file-upload-work)
+    - [RFC](https://tools.ietf.org/html/rfc7578)
+- `http.Request ParseMultipartForm`
+    - [Golang 文档](https://godoc.org/net/http#Request.ParseMultipartForm)
+- `http.Request FormFile`
+    - [Golang 文档](https://godoc.org/net/http#Request.FormFile)
+-->
+
+<h2 id="目录">目录</h2>
 
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">MDN 文档</a></li>
+<li>1 客户端的效果</li>
+<li>2 文件选择元素
+
+<ul>
+<li>2.1 multiple 属性：一次选择多个文件</li>
+<li>2.2 click 方法：用 JavaScript 调出文件选择窗口</li>
+<li>2.3 change 事件</li>
+<li>2.4 files 属性、FileList 对象、File 对象</li>
+<li>2.5 读取 File 对象的文件内容（略）</li>
 </ul></li>
-<li><code>window.File</code>
+<li>3 异步上传文件：XMLHttpRequest 与 FormData
 
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/File">MDN 文档</a></li>
+<li>3.1 XMLHttpRequest 的 progress 事件（略）</li>
 </ul></li>
-<li>AJAX
-
-<ul>
-<li><a href="https://baike.baidu.com/item/AJAX/8425">百度百科</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Ajax_(programming)">Wikipedia</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX">MDN 开发指南</a></li>
-</ul></li>
-<li><code>window.XMLHttpRequest</code>
-
-<ul>
-<li><code>...</code></li>
-</ul></li>
-<li><code>window.FormData</code>
-
-<ul>
-<li><code>...</code></li>
-</ul></li>
-<li><code>multipart/form-data</code>
-
-<ul>
-<li><a href="https://stackoverflow.com/questions/8659808/how-does-http-file-upload-work">StackOverflow 上的一个提问</a></li>
-<li><a href="https://tools.ietf.org/html/rfc7578">RFC</a></li>
-</ul></li>
-<li><code>http.Request ParseMultipartForm</code>
-
-<ul>
-<li><a href="https://godoc.org/net/http#Request.ParseMultipartForm">Golang 文档</a></li>
-</ul></li>
-<li><code>http.Request FormFile</code>
-
-<ul>
-<li><a href="https://godoc.org/net/http#Request.FormFile">Golang 文档</a></li>
-</ul></li>
+<li>4 关键概念与链接</li>
 </ul>
 
 <h2 id="1-客户端的效果">1 客户端的效果</h2>
 
-<p>以下是一个简单的演示。其中，“提交”按钮不能真正提交文件，而只作演示用（因为没有服务器）。</p>
+<p>&#9654; <strong>例子 1-1：</strong>简单的演示。其中，“提交”按钮不能真正提交文件，而只作演示用（因为没有服务器）。</p>
 
-<p><fieldset> <legend> 例子 1-1：一次性上传多个文件 </legend>
+<p><fieldset> <legend> 例子 1-1 演示：一次性上传多个文件 </legend>
 <input type='file' id='input_file' style='display:none' multiple>
 <div id='div_filelist'></div>
 <button id='btn_addmorefile'>添加更多文件</button>
@@ -199,45 +211,55 @@ btn_submit.onclick = function() {
 }
 </script>
 
-<p>下面就让我们来看看，这种效果是怎么实现的吧。</p>
+<p>&#9664;</p>
+
+<p>以下是基本知识点。</p>
 
 <h2 id="2-文件选择元素">2 文件选择元素</h2>
 
-<p>上面的例子 1-1 中，用户一点击“添加更多文件”，就能召唤出文件选择窗口；这是用 <code>input</code> 实现的。
-<code>input</code> 是一种 HTML 元素。当我们将其<code>type</code>属性设置为<code>file</code>，即：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-1：文件选择元素 --&gt;</span>
+<p>&#9654; <strong>例子 2-1（<code>&lt;input type='file'&gt;</code>）：</strong>在上面的例子 1-1 中，用户点击“添加更多文件”，就能调出文件选择窗口；这是用 <code>input</code> 实现的。
+input 是一种 HTML 元素。当 input 的 <code>type</code> 属性被设置为 <code>file</code>，即：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-1 代码：文件选择元素 --&gt;</span>
 &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;file&#39;</span>&gt;</code></pre></div>
 <p>就可以选择文件了。效果如下：</p>
 
-<p><input type='file'></p>
+<p><input type='file'> &#9664;</p>
 
-<p><code>type</code> 属性为 <code>file</code> 的 <code>input</code> 元素被称为 <strong>文件选择元素</strong>。点击文件选择元素自带的按钮之后，跳出来的窗口被称为 <strong>文件选择窗口</strong>。</p>
+<p>为了后续讨论方便，定义：</p>
 
-<p>注意：<code>input</code> 是不需要关闭标签的；换言之，</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-2：input 元素的不规范写法 --&gt;</span>
+<ul>
+<li>type 属性为 file 的 input 元素被称为 <strong>文件选择元素</strong>。</li>
+<li>点击文件选择元素自带的按钮之后，跳出来的窗口被称为 <strong>文件选择窗口</strong>。</li>
+</ul>
+
+<p>注意：input 是不需要关闭标签的；换言之，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- input 元素的不规范写法 --&gt;</span>
 &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;file&#39;</span>&gt;&lt;/<span style="color:#f92672">input</span>&gt; </code></pre></div>
 <p>这样的写法是不规范的。</p>
 
 <h3 id="2-1-multiple-属性-一次选择多个文件">2.1 <code>multiple</code> 属性：一次选择多个文件</h3>
 
 <p>文件选择元素的一个重要属性是 <code>multiple</code>，它决定了之后跳出的文件选择窗口是否可以选择多个文件。
-带 <code>multiple</code> 的文件选择元素可以选择多个文件。下面是例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-3：可以选择多个文件的文件选择元素 --&gt;</span>
+带 multiple 的文件选择元素可以选择多个文件。下面是例子：</p>
+
+<p>&#9654; <strong>例子 2-2：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-2 代码：可以选择多个文件的文件选择元素 --&gt;</span>
 &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;file&#39;</span> <span style="color:#a6e22e">multiple</span>&gt;</code></pre></div>
 <p>效果：</p>
 
 <p><input type='file' multiple></p>
 
-<p>上面这个文件选择元素允许使用者选择多个文件，来试一试吧。</p>
+<p>上面这个文件选择元素允许使用者选择多个文件，来试一试吧。 &#9664;</p>
 
 <h3 id="2-2-click-方法-用-javascript-调出文件选择窗口">2.2 <code>click</code> 方法：用 JavaScript 调出文件选择窗口</h3>
 
 <p>多数时候，出于美观考虑，我们希望用自定义的按钮调出文件选择窗口，也就是自己搞一个按钮，然后一点这个按钮，就可以让我们选择文件。
-那么这种需求该怎么实现呢？</p>
-
-<p>答案是可以先通过增加 <code>display:none;</code> 样式，把文件选择元素隐藏起来；然后需要调出文件选择窗口的时候，通过 JavaScript 调用文件选择元素的 <code>click</code> 方法。
+为了实现这一需求，可以先通过增加 <code>display:none;</code> 样式，把文件选择元素隐藏起来；
+然后需要调出文件选择窗口的时候，通过 JavaScript 调用文件选择元素的 <code>click</code> 方法。
 以下是例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-4：用 JavaScript 调出文件选择窗口 --&gt;</span>
+
+<p>&#9654; <strong>例子 2-3：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 例子 2-3 代码：用 JavaScript 调出文件选择窗口 --&gt;</span>
 
 <span style="color:#75715e">&lt;!-- 自定义样式的按钮： --&gt;</span>
 &lt;<span style="color:#f92672">div</span>
@@ -272,44 +294,186 @@ document.getElementById('elemButton').addEventListener('click', function() {
 });
 </script>
 
-<h3 id="2-3-files-属性-获取被选中文件的信息">2.3 <code>files</code> 属性：获取被选中文件的信息</h3>
+<p>只要点击上面的按钮，就可以调出文件选择窗口了。 &#9664;</p>
 
-<p>选中文件之后，我们该如何通过 JavaScript 来得知选中文件的信息呢？答案是可以通过文件选择元素的 <code>files</code> 属性来访问。
-为了直观地理解 <code>files</code> 属性，这里是一个练习，只要照着做即可：</p>
+<h3 id="2-3-change-事件">2.3 <code>change</code> 事件</h3>
+
+<p>当用户通过文件选择元素选中了新的文件时，change 事件会被触发。</p>
+
+<p>有时候，我们希望用户选中文件以后，系统能弹出一个对话框，上面有“您已经选择了文件！”的提示。为了实现这一需求，我们可以把弹出对话框的代码写到一个匿名函数里，再把这个匿名函数通过 addEventListener 绑定为 change 事件的回调函数。</p>
+
+<p>&#9654; <strong>例子 2-4：change 事件演示</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;file&#39;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;elemFileSelector&#39;</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;elemFileSelector&#39;</span>).<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;change&#39;</span>, <span style="color:#66d9ef">function</span>() {
+	<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;您已经选择了文件！&#39;</span>);
+});
+&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></div>
+<p>效果如下：</p>
+
+<p><input type='file' id='elemFileSelector1'> &#9664;
+<script>
+document.getElementById(&lsquo;elemFileSelector1&rsquo;).addEventListener(&lsquo;change&rsquo;, function() {
+    alert(&lsquo;您已经选择了文件！&rsquo;);
+});
+</script></p>
+
+<h3 id="2-4-files-属性-filelist-对象-file-对象">2.4 <code>files</code> 属性、<code>FileList</code> 对象、<code>File</code> 对象</h3>
+
+<p>选中文件之后，可以用 JavaScript 通过文件选择元素的 <code>files</code> 属性来访问被选中的文件的信息。
+以下是一个试验：</p>
 
 <blockquote>
-<p><strong>练习：获取选中文件的信息</strong></p>
+<p><strong>试验：通过 files 属性获取选中文件的信息</strong></p>
 
 <p>准备：需要有一个能打开开发者面板的 PC 端浏览器。</p>
 
 <p><input id='elemFileSelector2' type='file' multiple></p>
 
 <ol>
-<li>选文件。上面是一个 <code>id</code> 属性为 <code>elemFileSelector2</code> 文件选择元素，请点击按钮，然后选择 3 个文件。</li>
-<li>打开开发者面板的“控制台”区，就是可以输入 JavaScript 的地方。（按 F12 然后点 “Console”）</li>
+<li>选文件。上面是一个 <code>id</code> 属性为 <code>elemFileSelector2</code> 文件选择元素。首先点击按钮，然后选择 3 个文件。</li>
+<li>然后，打开开发者面板的控制台。</li>
 
-<li><p>输入下面这一行代码，然后回车。</p>
+<li><p>接着，执行下面这一行代码。这行代码的作用是，将 <code>elemFileSelector2</code> 的 <code>files</code> 属性值打印到控制台上。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;elemFileSelector2&#39;</span>).<span style="color:#a6e22e">files</span>);
 </code></pre></div></li>
 
-<li><p>观察输出结果。</p></li>
+<li><p>最后，观察输出结果。</p></li>
 </ol>
 </blockquote>
 
 <p>输出截图如下（会根据浏览器的不同而有样式上的不同）：</p>
 
-<p><img src="https://blog.wshtan.net/pic/file_upload_demo_1.png" alt="练习结果" /></p>
+<p><img src="https://blog.wshtan.net/pic/file_upload_demo_1.png" alt="试验结果截图" /></p>
 
-<p>我们可以看到，截图中的输出结果是一个有着 3 个 <code>File</code> 对象的 <code>FileList</code> 对象。
+<p>截图中的输出结果是一个有着 3 个 <code>File</code> 对象的 <code>FileList</code> 对象。
 也就是说，文件选择元素的 <code>files</code> 属性的值，是一个 FileList。</p>
 
-<p>那么我们该如何访问这个 FileList 呢？我们又该如何访问里面的 File 对象呢？下面就让我们一起来研究吧。</p>
+<p>FileList 的访问方法与数组类似，都是通过方括号算符来访问的。
+比如说，如果想把首个File对象输出到控制台上，可以这样：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">selectedFiles</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;elemFileSelector&#39;</span>).<span style="color:#a6e22e">files</span>; <span style="color:#75715e">// 其中，elemFileSelector 为文件选择元素的 id。
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// selectedFiles 的类型是 FileList，
+</span><span style="color:#75715e">// selectedFiles[0] 的类型是 File。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">selectedFiles</span>[<span style="color:#ae81ff">0</span>]);
+</code></pre></div>
+<p>FileList 不是数组，没有 push 和 pop 之类的方法。不过，FileList 也有 length 属性。
+也就是说：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">selectedFiles</span>.<span style="color:#a6e22e">length</span>);
+</code></pre></div>
+<p>这行代码可以输出选中了多少文件。</p>
 
-<h2 id="3-window-filelist-与-window-file">3 window.FileList 与 window.File</h2>
+<p>FileList 里面是一堆 File 对象。每个 File 对象中，有这四个属性：</p>
 
-<h2 id="4-实现第一章的演示-例子-1-1">4 实现第一章的演示（例子 1-1）</h2>
+<ul>
+<li><code>lastModified</code>：文件最后一次被修改的时间。是数字。以毫秒为单位的 UNIX 时间戳。</li>
+<li><code>name</code>：文件名。</li>
+<li><code>size</code>：文件的大小。数字。以字节为单位。</li>
+<li><code>type</code>：文件的 <a href="https://baike.baidu.com/item/MIME/2900607">MIME</a> 类型。其值由且只由文件后缀决定。比如说，有一个 png 图象文件，但是这个图象文件的后缀是 <code>.txt</code>，那么其对应 File 对象的 type 值就是 <code>text/plain</code>，而不是 <code>image/png</code>。</li>
+</ul>
 
-<h2 id="5-异步上传文件-xmlhttprequest-与-formdata">5 异步上传文件：XMLHttpRequest 与 FormData</h2>
+<p>这四个属性都是只读的。</p>
+
+<h3 id="2-5-读取-file-对象的文件内容-略">2.5 读取 File 对象的文件内容（略）</h3>
+
+<p>上述的四个属性都是用来描述文件的元信息的。文件里面的内容无法光靠这四个属性读取。想要读取 File 对象对应的文件内容，可以这样：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 假设 fileObject 是一个 File 对象：
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">fileObject</span>.<span style="color:#a6e22e">arrayBuffer</span>().<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">buf</span>) {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">byteArray</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Uint8Array</span>(<span style="color:#a6e22e">buf</span>);
+});
+</code></pre></div>
+<p>上面的代码构建了一个 Uint8Array，并把 fileObject 的文件内容写到了这个 Uint8Array 里面。想要查看 byteArray 里面的内容，可以用 console.log 输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">fileObject</span>.<span style="color:#a6e22e">arrayBuffer</span>().<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">buf</span>) {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">byteArray</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Uint8Array</span>(<span style="color:#a6e22e">buf</span>);
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">byteArray</span>);
+});
+</code></pre></div>
+<h2 id="3-异步上传文件-xmlhttprequest-与-formdata">3 异步上传文件：<code>XMLHttpRequest</code> 与 <code>FormData</code></h2>
+
+<p>假设现在有一个名为 fileObject 的变量，指向一个 File 对象。通过以下代码，可以把这个对象代表的文件通过 POST 方法上传到 <code>http://target-url.com/</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 方法 1：
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">formData</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormData</span>();
+<span style="color:#a6e22e">formData</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;fileobject&#39;</span>, <span style="color:#a6e22e">fileObject</span>); <span style="color:#75715e">// 将 fileObject 包装进 formData 中。
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xhr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>();
+<span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#39;POST&#39;</span>, <span style="color:#e6db74">&#39;http://target-url.com&#39;</span>);
+<span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">formData</span>);
+</code></pre></div>
+<p>在大多数新版本的浏览器中，也可以直接把 fileObject 作为 <code>xhr.send</code> 的参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 方法 2：
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xhr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>();
+<span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#39;POST&#39;</span>, <span style="color:#e6db74">&#39;http://target-url.com/&#39;</span>);
+<span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">fileObject</span>);
+</code></pre></div>
+<p>这两种方法的一些区别：</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>方法 1 - xhr.send(<FormData>)</th>
+<th>方法 2 - xhr.send(<File>)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>请求体</td>
+<td>multipart/form-data</td>
+<td>普通的 Post Request，文件的内容作为 Request Payload</td>
+</tr>
+
+<tr>
+<td>浏览器支持</td>
+<td>Chrome 6+（更广泛的支持）</td>
+<td>Chrome 22+</td>
+</tr>
+</tbody>
+</table>
+
+<p>具体的区别，将在下一篇（Part 2/3）记录。</p>
+
+<blockquote>
+<p><strong>旁注：<code>XMLHttpRequest</code> 的 <code>progress</code> 事件</strong></p>
+
+<p>有时候，我们会想要得知文件上传的进度，比如做一个进度条之类的。这个需求可以通过监听 XMLHttpRequest 的 progress 事件来实现。具体方法见 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/progress_event">MDN Doc - Progress Event</a>。</p>
+</blockquote>
+
+<h2 id="4-总结-关键概念与链接">4 总结：关键概念与链接</h2>
+
+<ul>
+<li>文件选择元素（<code>&lt;input type='file'&gt;</code>）
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">MDN 文档</a></li>
+</ul></li>
+<li><code>window.File</code>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/File">MDN 文档</a></li>
+</ul></li>
+<li>AJAX
+
+<ul>
+<li><a href="https://baike.baidu.com/item/AJAX/8425">百度百科</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ajax_(programming)">Wikipedia</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX">MDN 开发指南</a></li>
+</ul></li>
+<li><code>window.XMLHttpRequest</code>
+
+<ul>
+<li><code>...</code></li>
+</ul></li>
+<li><code>window.FormData</code>
+
+<ul>
+<li><code>...</code></li>
+</ul></li>
+</ul>
 
 </article>
 
