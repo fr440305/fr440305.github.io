@@ -4,18 +4,35 @@
   
   <url>
     <loc>https://blog.wshtan.net/</loc>
-    <lastmod>2020-07-24T19:43:53-07:00</lastmod>
+    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.wshtan.net/posts/</loc>
-    <lastmod>2020-07-24T19:43:53-07:00</lastmod>
+    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.wshtan.net/tags/</loc>
+    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/tags/nonsense/</loc>
+    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/posts/nonsense-aug-2020/</loc>
+    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/tags/javascript/</loc>
     <lastmod>2020-07-24T19:43:53-07:00</lastmod>
     <priority>0</priority>
   </url>
@@ -33,12 +50,6 @@
   
   <url>
     <loc>https://blog.wshtan.net/tags/life/</loc>
-    <lastmod>2020-06-29T22:10:24-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.wshtan.net/tags/nonsense/</loc>
     <lastmod>2020-06-29T22:10:24-07:00</lastmod>
     <priority>0</priority>
   </url>
@@ -101,6 +112,11 @@
   
   <url>
     <loc>https://blog.wshtan.net/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/series/</loc>
     <priority>0</priority>
   </url>
   

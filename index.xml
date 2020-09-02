@@ -6,10 +6,22 @@
     <description>Recent content on I&#39;LL BE HERE</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - fr440305 | Theme: Kiera</copyright>
-    <lastBuildDate>Fri, 24 Jul 2020 19:43:53 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2020 21:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://blog.wshtan.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>八月份的流水帐</title>
+      <link>https://blog.wshtan.net/posts/nonsense-aug-2020/</link>
+      <pubDate>Tue, 01 Sep 2020 21:00:00 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/posts/nonsense-aug-2020/</guid>
+      <description>每个月一篇，如果憋不出来，就拿流水帐凑数。
+但是我发现，我好像连流水帐也写不出来了，因为整个八月的记忆就跟消失了一样。
+那就先写这么多吧。这不叫妥协，这叫战略性撤退。
+以上。</description>
+    </item>
     
     <item>
       <title>在浏览器中用 JavaScript 上传文件 (1/3) 前端的代码</title>

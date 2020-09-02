@@ -79,6 +79,9 @@
                     
                     <a href="https://blog.wshtan.net/tags/web-dev/">#web-dev</a>
                 
+                    , 
+                    <a href="https://blog.wshtan.net/tags/javascript/">#JavaScript</a>
+                
             </em>
         </li>
         
@@ -93,7 +96,7 @@
 
 <ul>
 <li><strong>Part 1/3：前端的代码【这一篇】</strong></li>
-<li>Part 2/3：multipart/form-data 的请求体</li>
+<li>Part 2/3：multipart/form-data 的 POST 请求</li>
 <li>Part 3/3：后端的代码（Golang 版）</li>
 </ul>
 
@@ -134,11 +137,7 @@
 <li>2.4 files 属性、FileList 对象、File 对象</li>
 <li>2.5 读取 File 对象的文件内容（略）</li>
 </ul></li>
-<li>3 异步上传文件：XMLHttpRequest 与 FormData
-
-<ul>
-<li>3.1 XMLHttpRequest 的 progress 事件（略）</li>
-</ul></li>
+<li>3 异步上传文件：XMLHttpRequest 与 FormData</li>
 <li>4 关键概念与链接</li>
 </ul>
 
@@ -382,7 +381,9 @@ document.getElementById(&lsquo;elemFileSelector1&rsquo;).addEventListener(&lsquo
 	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">byteArray</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Uint8Array</span>(<span style="color:#a6e22e">buf</span>);
 });
 </code></pre></div>
-<p>上面的代码构建了一个 Uint8Array，并把 fileObject 的文件内容写到了这个 Uint8Array 里面。想要查看 byteArray 里面的内容，可以用 console.log 输出：</p>
+<p>上面的代码构建了一个名为 byteArray、类型为 Uint8Array 的变量。
+<del>Uint8Array 为 fileObject 所指的 ArrayBuffer 提供数据视图，允许程序员对那一块 ArrayBuffer 进行读写。（待查）</del>
+想要查看 byteArray 里面的内容，可以用 console.log 输出：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">fileObject</span>.<span style="color:#a6e22e">arrayBuffer</span>().<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">buf</span>) {
 	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">byteArray</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Uint8Array</span>(<span style="color:#a6e22e">buf</span>);
 	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">byteArray</span>);
@@ -483,6 +484,10 @@ document.getElementById(&lsquo;elemFileSelector1&rsquo;).addEventListener(&lsquo
             <a href="https://blog.wshtan.net/posts/nonsense-jun-2020/"><i class="fa fa-chevron-circle-left"></i> 六月份的流水帐</a>
         </li>
         
+        
+        <li>
+            <a href="https://blog.wshtan.net/posts/nonsense-aug-2020/">八月份的流水帐 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
         
     </ul>
 </section>

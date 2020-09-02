@@ -6,10 +6,28 @@
     <description>Recent content in Tags on I&#39;LL BE HERE</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - fr440305 | Theme: Kiera</copyright>
-    <lastBuildDate>Fri, 24 Jul 2020 19:43:53 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2020 21:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://blog.wshtan.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>nonsense</title>
+      <link>https://blog.wshtan.net/tags/nonsense/</link>
+      <pubDate>Tue, 01 Sep 2020 21:00:00 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/nonsense/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://blog.wshtan.net/tags/javascript/</link>
+      <pubDate>Fri, 24 Jul 2020 19:43:53 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/javascript/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>web-dev</title>
@@ -26,15 +44,6 @@
       <pubDate>Mon, 29 Jun 2020 22:10:24 -0700</pubDate>
       
       <guid>https://blog.wshtan.net/tags/life/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nonsense</title>
-      <link>https://blog.wshtan.net/tags/nonsense/</link>
-      <pubDate>Mon, 29 Jun 2020 22:10:24 -0700</pubDate>
-      
-      <guid>https://blog.wshtan.net/tags/nonsense/</guid>
       <description></description>
     </item>
     
