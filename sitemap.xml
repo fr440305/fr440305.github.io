@@ -4,35 +4,35 @@
   
   <url>
     <loc>https://blog.wshtan.net/</loc>
-    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.wshtan.net/posts/</loc>
-    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
+    <lastmod>2020-09-29T21:00:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.wshtan.net/tags/</loc>
-    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
+    <lastmod>2020-09-29T21:00:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.wshtan.net/tags/nonsense/</loc>
-    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
+    <lastmod>2020-09-29T21:00:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.wshtan.net/posts/nonsense-aug-2020/</loc>
-    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
+    <loc>https://blog.wshtan.net/nonsense/</loc>
+    <lastmod>2020-09-29T21:00:00-07:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.wshtan.net/tags/javascript/</loc>
+    <lastmod>2020-07-24T19:43:53-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/posts/</loc>
     <lastmod>2020-07-24T19:43:53-07:00</lastmod>
     <priority>0</priority>
   </url>
@@ -46,17 +46,6 @@
   <url>
     <loc>https://blog.wshtan.net/posts/file-upload-using-javascript-in-browser/</loc>
     <lastmod>2020-07-24T19:43:53-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.wshtan.net/tags/life/</loc>
-    <lastmod>2020-06-29T22:10:24-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.wshtan.net/posts/nonsense-jun-2020/</loc>
-    <lastmod>2020-06-29T22:10:24-07:00</lastmod>
   </url>
   
   <url>
@@ -81,11 +70,6 @@
   </url>
   
   <url>
-    <loc>https://blog.wshtan.net/posts/nonsense-dec-2019/</loc>
-    <lastmod>2019-12-08T13:56:18-08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.wshtan.net/posts/notes-on-atrq-ch123/</loc>
     <lastmod>2019-10-31T17:47:47-07:00</lastmod>
   </url>
@@ -103,6 +87,12 @@
   <url>
     <loc>https://blog.wshtan.net/posts/comment-ok/</loc>
     <lastmod>2019-08-18T16:17:25-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/tags/life/</loc>
+    <lastmod>2019-08-18T16:17:25-07:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>

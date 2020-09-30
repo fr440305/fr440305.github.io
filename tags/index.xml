@@ -6,7 +6,7 @@
     <description>Recent content in Tags on I&#39;LL BE HERE</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - fr440305 | Theme: Kiera</copyright>
-    <lastBuildDate>Tue, 01 Sep 2020 21:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2020 21:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://blog.wshtan.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>nonsense</title>
       <link>https://blog.wshtan.net/tags/nonsense/</link>
-      <pubDate>Tue, 01 Sep 2020 21:00:00 -0700</pubDate>
+      <pubDate>Tue, 29 Sep 2020 21:00:00 -0700</pubDate>
       
       <guid>https://blog.wshtan.net/tags/nonsense/</guid>
       <description></description>
@@ -39,20 +39,20 @@
     </item>
     
     <item>
-      <title>life</title>
-      <link>https://blog.wshtan.net/tags/life/</link>
-      <pubDate>Mon, 29 Jun 2020 22:10:24 -0700</pubDate>
-      
-      <guid>https://blog.wshtan.net/tags/life/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>golang</title>
       <link>https://blog.wshtan.net/tags/golang/</link>
       <pubDate>Sun, 29 Dec 2019 22:34:40 -0800</pubDate>
       
       <guid>https://blog.wshtan.net/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>life</title>
+      <link>https://blog.wshtan.net/tags/life/</link>
+      <pubDate>Sun, 18 Aug 2019 16:17:25 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/life/</guid>
       <description></description>
     </item>
     
