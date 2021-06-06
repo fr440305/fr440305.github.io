@@ -3,14 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.wshtan.net/posts/goals-in-2021/</loc>
-    <lastmod>2021-02-11T13:12:16-08:00</lastmod>
+    <loc>https://blog.wshtan.net/</loc>
+    <lastmod>2021-06-05T23:40:00-07:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.wshtan.net/</loc>
+    <loc>https://blog.wshtan.net/links/</loc>
+    <lastmod>2021-06-05T23:40:00-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/posts/goals-in-2021/</loc>
     <lastmod>2021-02-11T13:12:16-08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
