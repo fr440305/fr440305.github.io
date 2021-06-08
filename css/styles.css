@@ -383,3 +383,20 @@ ul.pagination {
 ul.pagination li {
   padding: 0 1em;
 }
+
+/* #import "nightmode.css" */
+
+body.nightmode {
+	background: #111;
+	color: #bbb;
+}
+
+.nightmode a {
+	color: #6cf;
+}
+
+.nightmode blockquote {
+	background: #333;
+}
+
+/* #endimport */
