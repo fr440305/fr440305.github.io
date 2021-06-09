@@ -15,11 +15,9 @@ if (window.localStorage !== undefined) { // supported
 
 	var el = document.getElementById("ElemToggleNightMode");
 	el.innerText = "Toggle Night Mode";
-	el.addEventListener("click", function() {
-		at_night = {
-			"true": "false",
-			"false": "true"
-		}[at_night];
+	el.addEventListener("click", function(e) {
+		e.preventDefault();
+		at_night = { "true": "false", "false": "true" }[at_night];
 		window.localStorage.setItem("nightmode", at_night);
 		document.body.classList.toggle("nightmode");
 	});
