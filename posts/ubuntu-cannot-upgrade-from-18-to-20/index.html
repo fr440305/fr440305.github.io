@@ -1,0 +1,238 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>I&#39;LL BE HERE</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="fr440305" />
+  <meta name="generator" content="Hugo 0.56.0-DEV" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://blog.wshtan.net/css/styles.css" />
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-120042471-1');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://blog.wshtan.net/">I&rsquo;LL BE HERE</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+      <p><em>in solitude where we are least alone.</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/hello/">
+                <i class="fa-li fa  fa-lg"></i><span>Hello</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/links/">
+                <i class="fa-li fa  fa-lg"></i><span>Links</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/tags/index.html">
+                <i class="fa-li fa  fa-lg"></i><span>Tags</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>自己的 Ubuntu 常用软件</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-07-09T19:40:05-07:00">Jul 9, 2021</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://blog.wshtan.net/tags/home/">#home</a>
+                
+                    , 
+                    <a href="https://blog.wshtan.net/tags/linux/">#linux</a>
+                
+                    , 
+                    <a href="https://blog.wshtan.net/tags/ubuntu/">#ubuntu</a>
+                
+                    , 
+                    <a href="https://blog.wshtan.net/tags/system-update-upgrade/">#system-update-upgrade</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+
+    
+
+    <p>Ubuntu 大版本升不上去。</p>
+
+<p>现在是 18.04 ，要升到 20.04 。嗨呀，根本升不上去啊。</p>
+
+<p>现在的版本会维护到 2023 年。假如 2023 年的时候人类还没灭绝，那么就要重装或
+者换系统了。所以现在先记录一下 Ubuntu 的一些常用软件和常见技术问题。</p>
+
+<p>断断续续写吧……</p>
+
+<h2 id="技术问题">技术问题</h2>
+
+<h3 id="1-无线网卡的驱动怎么装">1. 无线网卡的驱动怎么装。</h3>
+
+<p>操作系统识别不了内置的无线网卡。所以去买了个 <code>Realtek RTL8188EUS</code> 网卡。
+已经忘记自己当初是怎么装的了。</p>
+
+<h3 id="2-数位板驱动怎么装">2. 数位板驱动怎么装。</h3>
+
+<p>其实根本没装。没装驱动也是可以用的，只是识别不了压力感应。</p>
+
+<h3 id="3-输入法该怎么配置">3. 输入法该怎么配置。</h3>
+
+<p>Fctix, 搜狗拼音。</p>
+
+<h2 id="常用软件">常用软件</h2>
+
+<p>浏览器：</p>
+
+<ul>
+<li>Firefox</li>
+</ul>
+
+<p>看文档：</p>
+
+<ul>
+<li>LibreOffice 全家桶。</li>
+</ul>
+
+<p>写代码工具集：</p>
+
+<ul>
+<li>Vim 8+。用熟练的话（指可以自己写 Vim 8 Package 自己解决问题的程度）可以省
+很多事（其实仔细想想也省不了多少事）。缺陷之一就是打中文的时候不太方便。
+（你看我就说省不了多少事吧）不过总是习惯就好了。</li>
+<li>Tmux。分屏工具。想在工程目录下找代码的时候，就新开个窗口然后 <code>grep -nr
+'KeyWord'</code>。这么看起来的话也挺凄惨的。仔细想想，IDE 其实也没什么不好。</li>
+<li>GitAhead。用来看 Git 仓库的提交历史，挺方便的。</li>
+</ul>
+
+<p>单片机相关：（正在学，有很多地方都不是很懂）</p>
+
+<ul>
+<li>单片机型号 <code>stm32f4</code></li>
+<li>开发板型号 <code>stm32f4-discovery</code></li>
+<li>编译： <code>arm-eabi-none-{cpp, gcc, ld}</code></li>
+<li>烧录： <code>st-link</code></li>
+<li>调试：
+
+<ul>
+<li>新版本的 <code>gdb</code> 支持 <code>arm</code> 架构了。</li>
+</ul></li>
+</ul>
+
+<p>视频播放器：</p>
+
+<ul>
+<li>VLC Player。自带的那个播放器只能放音乐，不知道为什么根本放不了 MP4 视频。</li>
+</ul>
+
+<p>PDF 注释：</p>
+
+<ul>
+<li>Xournal。一个很小巧的软件。虽然有时候会有奇奇怪怪的 BUG （比如怎么点保存
+键都没反应）不过总之习惯就好了。</li>
+</ul>
+
+<p>博客：</p>
+
+<ul>
+<li>Hugo。找了 Kiera 的主题然后自己改了改。</li>
+</ul>
+
+<h2 id="toc_5">~</h2>
+
+<p>待续，也可能不待续……</p>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.wshtan.net/posts/nonsense-jun-2021/"><i class="fa fa-chevron-circle-left"></i> 胡言乱语 (2021.06) 关于耳鸣</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+    
+
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2021 - fr440305 | Theme: Kiera | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.wshtan.net/index.xml">Subscribe</a> |
+			<a href="#ElemToggleNightMode" id="ElemToggleNightMode"></a>
+		</h6>
+    </footer>
+</div>
+<script src="https://blog.wshtan.net/js/scripts.js"></script>
+</body>
+
+</html>

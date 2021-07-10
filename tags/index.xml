@@ -6,10 +6,46 @@
     <description>Recent content in Tags on I&#39;LL BE HERE</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2021 - fr440305 | Theme: Kiera</copyright>
-    <lastBuildDate>Thu, 10 Jun 2021 22:50:45 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 09 Jul 2021 19:40:05 -0700</lastBuildDate>
     
 	<atom:link href="https://blog.wshtan.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>home</title>
+      <link>https://blog.wshtan.net/tags/home/</link>
+      <pubDate>Fri, 09 Jul 2021 19:40:05 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/home/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://blog.wshtan.net/tags/linux/</link>
+      <pubDate>Fri, 09 Jul 2021 19:40:05 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>system-update-upgrade</title>
+      <link>https://blog.wshtan.net/tags/system-update-upgrade/</link>
+      <pubDate>Fri, 09 Jul 2021 19:40:05 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/system-update-upgrade/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://blog.wshtan.net/tags/ubuntu/</link>
+      <pubDate>Fri, 09 Jul 2021 19:40:05 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/ubuntu/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>life</title>
@@ -53,15 +89,6 @@
       <pubDate>Fri, 24 Jul 2020 19:43:53 -0700</pubDate>
       
       <guid>https://blog.wshtan.net/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>home</title>
-      <link>https://blog.wshtan.net/tags/home/</link>
-      <pubDate>Fri, 24 Jul 2020 19:43:53 -0700</pubDate>
-      
-      <guid>https://blog.wshtan.net/tags/home/</guid>
       <description></description>
     </item>
     
