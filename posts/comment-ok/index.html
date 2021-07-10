@@ -45,8 +45,8 @@
     <ul>
         
         <li>
-            <a class="" href="https://blog.wshtan.net/posts/index.html">
-                <i class="fa-li fa  fa-lg"></i><span>Archives</span>
+            <a class="" href="https://blog.wshtan.net/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
             </a>
         </li>
         
@@ -96,6 +96,9 @@
                     
                     <a href="https://blog.wshtan.net/tags/life/">#life</a>
                 
+                    , 
+                    <a href="https://blog.wshtan.net/tags/home/">#home</a>
+                
             </em>
         </li>
         
@@ -144,25 +147,30 @@ sudo docker run -d --rm --name isso -p <span style="color:#ae81ff">127</span>.0.
 
 <p>接下来我们就要通过编辑 Isso 的配置文件来解决跨域问题。
 打开 <code>/opt/isso/</code> 文件夹，在里面新建一个文本文件 <code>isso.cfg</code>，打开并插入文本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[general]</span>
 
-<pre><code>[general]
+<span style="color:#a6e22e">dbpath</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/db/comments.db</span>
 
-dbpath = /db/comments.db
-
-; 注意：是网页站点的网址！是 8080 而不是 9090！
-host = http://127.0.0.1:8080
-
-</code></pre>
-
-<p>这样，<a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> 的网页就可以通过 XmlHttpRequest 来访问 <a href="http://127.0.0.1:9090">http://127.0.0.1:9090</a> 的内容了。</p>
+<span style="color:#75715e">; 注意：是网页站点的网址！是 8080 而不是 9090！</span>
+<span style="color:#a6e22e">host</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">http://127.0.0.1:8080</span></code></pre></div>
+<p>这样，<a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> 的网页就可以通过 XmlHttpRequest 来访问
+<a href="http://127.0.0.1:9090">http://127.0.0.1:9090</a> 的内容了。</p>
 
 <p>更新了配置文件之后，我们或许需要重启 Isso：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo docker restart isso</code></pre></div>
-<p>重启以后，再一次用浏览器打开网页站点 <code>http://127.0.0.1:8080/</code>，现在，应该就 OK 了。
-注意，<code>127.0.0.1</code> 不能改成别的东西。比如，<code>http://localhost:8080/</code> 都不行。</p>
+<p>重启以后，再一次用浏览器打开网页站点 <code>http://127.0.0.1:8080/</code>，现在，应该就
+OK了。注意，<code>127.0.0.1</code> 不能改成别的东西。比如，<code>http://localhost:8080/</code> 都
+不行。</p>
 
-<p>以上就是为了让 Isso 在<strong>本机</strong>运行的简单的操作步骤。更完善的步骤，比如设置子域名然后用 Nginx 反向代理、用 PyPi 的安装方法、配置文件的格式与条目、
-评论的管理，请见 <a href="https://posativ.org/isso/docs/">https://posativ.org/isso/docs/</a>。</p>
+<p>以上就是为了让 Isso 在<strong>本机</strong>运行的简单的操作步骤。更完善的步骤，比如设置
+子域名然后用 Nginx 反向代理、用 PyPi 的安装方法、配置文件的格式与条目、评论
+的管理，请见
+<a href="https://posativ.org/isso/docs/">https://posativ.org/isso/docs/</a>。</p>
+
+<h2 id="2021-07-09-更新">2021.07.09 更新</h2>
+
+<p>其实发这篇文章之后不久，因为服务器忘记交钱了，评论系统就没了。之后也懒得再
+弄了。</p>
 
 </article>
 

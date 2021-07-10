@@ -3,13 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.wshtan.net/</loc>
+    <loc>https://blog.wshtan.net/posts/</loc>
     <lastmod>2021-06-10T22:50:45-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.wshtan.net/posts/</loc>
+    <loc>https://blog.wshtan.net/posts/garbage/</loc>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/</loc>
     <lastmod>2021-06-10T22:50:45-07:00</lastmod>
     <priority>0</priority>
   </url>
@@ -22,6 +25,12 @@
   
   <url>
     <loc>https://blog.wshtan.net/tags/life/</loc>
+    <lastmod>2021-06-10T22:50:45-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/tags/noindex/</loc>
     <lastmod>2021-06-10T22:50:45-07:00</lastmod>
     <priority>0</priority>
   </url>
@@ -64,7 +73,18 @@
   </url>
   
   <url>
+    <loc>https://blog.wshtan.net/posts/nonsense-aug-2020/</loc>
+    <lastmod>2020-09-01T21:00:00-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.wshtan.net/tags/javascript/</loc>
+    <lastmod>2020-07-24T19:43:53-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/tags/home/</loc>
     <lastmod>2020-07-24T19:43:53-07:00</lastmod>
     <priority>0</priority>
   </url>
@@ -78,6 +98,11 @@
   <url>
     <loc>https://blog.wshtan.net/posts/file-upload-using-javascript-in-browser/</loc>
     <lastmod>2020-07-24T19:43:53-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/posts/nonsense-jun-2020/</loc>
+    <lastmod>2020-06-29T22:10:24-07:00</lastmod>
   </url>
   
   <url>
@@ -99,6 +124,11 @@
     <loc>https://blog.wshtan.net/tags/golang/</loc>
     <lastmod>2019-12-29T22:34:40-08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wshtan.net/posts/nonsense-dec-2019/</loc>
+    <lastmod>2019-12-08T13:56:18-08:00</lastmod>
   </url>
   
   <url>
