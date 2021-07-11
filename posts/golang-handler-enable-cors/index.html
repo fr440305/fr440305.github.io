@@ -1,0 +1,348 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>I&#39;LL BE HERE</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="fr440305" />
+  <meta name="generator" content="Hugo 0.56.0-DEV" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://blog.wshtan.net/css/styles.css" />
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120042471-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-120042471-1');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://blog.wshtan.net/">I&rsquo;LL BE HERE</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+      <p><em>in solitude where we are least alone.</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/hello/">
+                <i class="fa-li fa  fa-lg"></i><span>Hello</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/links/">
+                <i class="fa-li fa  fa-lg"></i><span>Links</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://blog.wshtan.net/tags/index.html">
+                <i class="fa-li fa  fa-lg"></i><span>Tags</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>在 Golang 中如何编写允许跨域访问的 Handlers</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-07-11T10:20:46-07:00">Jul 11, 2021</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://blog.wshtan.net/tags/home/">#home</a>
+                
+                    , 
+                    <a href="https://blog.wshtan.net/tags/golang/">#golang</a>
+                
+                    , 
+                    <a href="https://blog.wshtan.net/tags/http/">#http</a>
+                
+                    , 
+                    <a href="https://blog.wshtan.net/tags/cors/">#cors</a>
+                
+                    , 
+                    <a href="https://blog.wshtan.net/tags/middleware/">#middleware</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+
+    
+
+    <p>可以直接在原有的 Handler 里面加东西，也可以用 <em>中间件</em> 。
+也可以再搞一个代理服务器。</p>
+
+<h2 id="1-问题的背景">1. 问题的背景</h2>
+
+<p>假如你有一个很简单的 Golang 服务器程序：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">/* handler.go */</span>
+
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;log&#34;</span>
+    <span style="color:#e6db74">&#34;net/http&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">serveHello</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+    <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#e6db74">&#34;hello, world&#34;</span>))
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">&#34;:8080&#34;</span>, <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">HandlerFunc</span>(<span style="color:#a6e22e">serveHello</span>)))
+}</code></pre></div>
+<p>然后很自然地，你就可以运行它。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go run ./handler.go
+
+<span style="color:#75715e"># 开始监听 8080 端口，对所有的 http 请求，都会返回 hello, world</span></code></pre></div>
+<p>但是这个 服务器不支持 <em><em>跨域资源共享 (Cross-Origin Resource Sharing, CORS)</em></em>
+。意思就是说，你打开浏览器，如果浏览器地址栏里面的域名不是 <code>127.0.0.1:8080</code>
+，那么就没有办法用 <code>XMLHttpRequest</code> 对服务器发起请求。</p>
+
+<p><img src="https://blog.wshtan.net/pic/cors-error.jpeg" alt="" /></p>
+
+<p>如果硬要发起请求的话，就会出现 <code>Cross-Origin Request Blocked</code> 之类的
+错误，如上图所示。</p>
+
+<h2 id="2-解法-修改服务器的代码-使服务器允许-cors">2. 解法：修改服务器的代码，使服务器允许 CORS</h2>
+
+<p>最简单的办法就是修改 <code>serveHello</code> 函数。在 <code>serveHello</code> 里面加上一行：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">-/* handler.go */
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+/* handler_allow_cors.go */
+</span><span style="color:#a6e22e"></span>
+ package main
+
+ import (
+     &#34;log&#34;
+     &#34;net/http&#34;
+ )
+
+ func serveHello(w http.ResponseWriter, r *http.Request) {
+<span style="color:#a6e22e">+	 w.Header().Set(&#34;Access-Control-Allow-Origin&#34;, &#34;*&#34;)
+</span><span style="color:#a6e22e"></span>     w.Write([]byte(&#34;hello, world&#34;))
+ }
+
+ func main() {
+     log.Fatal(http.ListenAndServe(&#34;:8080&#34;, http.HandlerFunc(serveHello)))
+ }
+</code></pre></div>
+<p>重新编译、重启服务器，再试一次，就发现 OK 了。</p>
+
+<p><img src="https://blog.wshtan.net/pic/cors-success.png" alt="" /></p>
+
+<p>但是，有时候，只加 <code>Access-Control-Allow-Origin</code> 是不够的。
+如果是 POST 或者其他类型的请求，还得设置其他的 Response Header，
+还要处理 CORS Preflight：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">-/* handler_allow_cors.go */
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+/* handler_allow_cors_more.go */
+</span><span style="color:#a6e22e"></span>
+ package main
+
+ import (
+     &#34;log&#34;
+     &#34;net/http&#34;
+ )
+
+ func serveHello(w http.ResponseWriter, r *http.Request) {
+ 	w.Header().Set(&#34;Access-Control-Allow-Origin&#34;, &#34;*&#34;)
+<span style="color:#a6e22e">+	w.Header().Set(
+</span><span style="color:#a6e22e">+		&#34;Access-Control-Allow-Methods&#34;,
+</span><span style="color:#a6e22e">+		&#34;POST, GET, OPTIONS, PUT, DELETE&#34;,
+</span><span style="color:#a6e22e">+	)
+</span><span style="color:#a6e22e">+	w.Header().Set(
+</span><span style="color:#a6e22e">+		&#34;Access-Control-Allow-Headers&#34;,
+</span><span style="color:#a6e22e">+		&#34;Accept, Content-Type, Content-Length&#34;,
+</span><span style="color:#a6e22e">+	)
+</span><span style="color:#a6e22e">+	if (*r).Method == &#34;OPTIONS&#34; {
+</span><span style="color:#a6e22e">+		return
+</span><span style="color:#a6e22e">+	}
+</span><span style="color:#a6e22e"></span>
+	w.Write([]byte(&#34;hello, world&#34;))
+ }
+
+ func main() {
+     log.Fatal(http.ListenAndServe(&#34;:8080&#34;, http.HandlerFunc(serveHello)))
+ }
+</code></pre></div>
+<h2 id="3-中间件封装">3. 中间件封装</h2>
+
+<p>但是假如有很多个 handlers 的话，我们
+不想复制代码，然后在每个 handler 里面粘贴很多遍。</p>
+
+<p>这个时候就可以把允许 CORS 的代码封装成中间件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">-/* handler_allow_cors_more.go */
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+/* handler_allow_cors_using_middleware.go */
+</span><span style="color:#a6e22e"></span>
+ package main
+
+ import (
+     &#34;log&#34;
+     &#34;net/http&#34;
+ )
+
+ func serveHello(w http.ResponseWriter, r *http.Request) {
+<span style="color:#f92672">-	w.Header().Set(&#34;Access-Control-Allow-Origin&#34;, &#34;*&#34;)
+</span><span style="color:#f92672">-	w.Header().Set(
+</span><span style="color:#f92672">-		&#34;Access-Control-Allow-Methods&#34;,
+</span><span style="color:#f92672">-		&#34;POST, GET, OPTIONS, PUT, DELETE&#34;,
+</span><span style="color:#f92672">-	)
+</span><span style="color:#f92672">-	w.Header().Set(
+</span><span style="color:#f92672">-		&#34;Access-Control-Allow-Headers&#34;,
+</span><span style="color:#f92672">-		&#34;Accept, Content-Type, Content-Length&#34;,
+</span><span style="color:#f92672">-	)
+</span><span style="color:#f92672">-	if (*r).Method == &#34;OPTIONS&#34; {
+</span><span style="color:#f92672">-		return
+</span><span style="color:#f92672">-	}
+</span><span style="color:#f92672">-
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+	// 现在 serveHello 变回了最初的样子：
+</span><span style="color:#a6e22e"></span>	w.Write([]byte(&#34;hello, world&#34;))
+ }
+
+<span style="color:#a6e22e">+func UNSAFE_enableCORS(h http.Handler) http.Handler {
+</span><span style="color:#a6e22e">+	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
+</span><span style="color:#a6e22e">+		w.Header().Set(&#34;Access-Control-Allow-Origin&#34;, &#34;*&#34;)
+</span><span style="color:#a6e22e">+		w.Header().Set(
+</span><span style="color:#a6e22e">+			&#34;Access-Control-Allow-Methods&#34;,
+</span><span style="color:#a6e22e">+			&#34;POST, GET, OPTIONS, PUT, DELETE&#34;,
+</span><span style="color:#a6e22e">+		)
+</span><span style="color:#a6e22e">+		w.Header().Set(
+</span><span style="color:#a6e22e">+			&#34;Access-Control-Allow-Headers&#34;,
+</span><span style="color:#a6e22e">+			&#34;Accept, Content-Type, Content-Length&#34;,
+</span><span style="color:#a6e22e">+		)
+</span><span style="color:#a6e22e">+		if (*r).Method == &#34;OPTIONS&#34; {
+</span><span style="color:#a6e22e">+			return
+</span><span style="color:#a6e22e">+		}
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+		h.ServeHTTP(w, r)
+</span><span style="color:#a6e22e">+	})
+</span><span style="color:#a6e22e">+}
+</span><span style="color:#a6e22e"></span>
+ func main() {
+<span style="color:#f92672">-	log.Fatal(http.ListenAndServe(&#34;:8080&#34;, http.HandlerFunc(serveHello)))
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+	log.Fatal(
+</span><span style="color:#a6e22e">+		http.ListenAndServe(
+</span><span style="color:#a6e22e">+			&#34;:8080&#34;,
+</span><span style="color:#a6e22e">+			UNSAFE_enableCORS(http.HandlerFunc(serveHello)),
+</span><span style="color:#a6e22e">+		)
+</span><span style="color:#a6e22e">+	)
+</span><span style="color:#a6e22e"></span>}
+</code></pre></div>
+<blockquote>
+<p>【旁注】什么叫“中间件”？</p>
+
+<p>在这里，中间件（Middleware）指的就是接受一个 http.Handler，返回一个
+http.Handler 的函数（见文章底部的“相关链接”）。比如上面代码中的
+<code>UNSAFE_enableCORS</code> 就是一个中间件。</p>
+</blockquote>
+
+<p>之后，如果想让某个 handler （比如说 <code>serveCertainContent</code>）
+支持跨域访问的话，就用 <code>UNSAFE_enableCORS(serveCertainContent)</code> 即可。</p>
+
+<h2 id="4-能不能不改服务器的代码">4. 能不能不改服务器的代码？</h2>
+
+<p>封装了中间件以后，其实只要在 main 函数里面改代码就可以了，
+handler 里面的代码不用改。但是假如服务器不在你手上，你根本改不了的话，
+那该怎么办呢？</p>
+
+<p>这个时候就可以设置代理服务器。比如，可以在本机上架个 nginx，然后在配置文件
+里面设置 <code>proxy_pass</code>，然后用 <code>add_header</code> 覆写原来的 Response Header。</p>
+
+<p>假如你是前端程序员，想用别人的服务器做测试，也可以用 webpack 的 devServer
+自己写一个代理服务器。</p>
+
+<p>有点离题了。就到这里吧。</p>
+
+<h2 id="相关链接">相关链接</h2>
+
+<ul>
+<li>【外链】<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">MDN 对 CORS 的介绍</a></li>
+<li>【外链】<a href="https://flaviocopes.com/golang-enable-cors/">在 Golang 中允许跨域访问</a></li>
+<li>【外链】<a href="https://blog.cong.moe/post/http-middleware/">什么是中间件</a></li>
+<li>【外链】<a href="https://developer.mozilla.org/en-US/docs/Glossary/Middleware">什么是中间件 -
+MDN</a></li>
+</ul>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.wshtan.net/posts/ubuntu-cannot-upgrade-from-18-to-20/"><i class="fa fa-chevron-circle-left"></i> 自己的 Ubuntu 常用软件</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+    
+
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2021 - fr440305 | Theme: Kiera | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.wshtan.net/index.xml">Subscribe</a> |
+			<a href="#ElemToggleNightMode" id="ElemToggleNightMode"></a>
+		</h6>
+    </footer>
+</div>
+<script src="https://blog.wshtan.net/js/scripts.js"></script>
+</body>
+
+</html>

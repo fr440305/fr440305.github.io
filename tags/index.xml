@@ -6,17 +6,53 @@
     <description>Recent content in Tags on I&#39;LL BE HERE</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2021 - fr440305 | Theme: Kiera</copyright>
-    <lastBuildDate>Fri, 09 Jul 2021 19:40:05 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 11 Jul 2021 10:20:46 -0700</lastBuildDate>
     
 	<atom:link href="https://blog.wshtan.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>cors</title>
+      <link>https://blog.wshtan.net/tags/cors/</link>
+      <pubDate>Sun, 11 Jul 2021 10:20:46 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/cors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://blog.wshtan.net/tags/golang/</link>
+      <pubDate>Sun, 11 Jul 2021 10:20:46 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>home</title>
       <link>https://blog.wshtan.net/tags/home/</link>
-      <pubDate>Fri, 09 Jul 2021 19:40:05 -0700</pubDate>
+      <pubDate>Sun, 11 Jul 2021 10:20:46 -0700</pubDate>
       
       <guid>https://blog.wshtan.net/tags/home/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>http</title>
+      <link>https://blog.wshtan.net/tags/http/</link>
+      <pubDate>Sun, 11 Jul 2021 10:20:46 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>middleware</title>
+      <link>https://blog.wshtan.net/tags/middleware/</link>
+      <pubDate>Sun, 11 Jul 2021 10:20:46 -0700</pubDate>
+      
+      <guid>https://blog.wshtan.net/tags/middleware/</guid>
       <description></description>
     </item>
     
@@ -98,15 +134,6 @@
       <pubDate>Fri, 24 Jul 2020 19:43:53 -0700</pubDate>
       
       <guid>https://blog.wshtan.net/tags/web-dev/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://blog.wshtan.net/tags/golang/</link>
-      <pubDate>Sun, 29 Dec 2019 22:34:40 -0800</pubDate>
-      
-      <guid>https://blog.wshtan.net/tags/golang/</guid>
       <description></description>
     </item>
     
